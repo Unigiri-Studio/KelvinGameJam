@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2etlvgppsc2r"]
+
+[ext_resource type="PackedScene" uid="uid://ct2pno0e7p6v5" path="res://scene/fish.tscn" id="1_efsbm"]
+[ext_resource type="Script" path="res://scene/node_3d.gd" id="1_omqpn"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a0hu6"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_omqpn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+layers = 129
+mesh = SubResource("PlaneMesh_a0hu6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.6407, 0.767792, 0, -0.767792, 0.6407, 0, 3.20156, 7.97109)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.74437, 0.667768, 0, -0.667768, 0.74437, 0, 7.45049, 9.06638)
+
+[node name="Fish" parent="." instance=ExtResource("1_efsbm")]
