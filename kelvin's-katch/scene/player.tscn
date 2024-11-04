@@ -108,7 +108,7 @@ animations = [{
 [node name="player" type="CharacterBody3D"]
 script = ExtResource("1_tpxmx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="playerCol" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.26993, 0, 0, 0, 1.26993, 0, 0, 0, 1.26993, 0, 0, 0)
 shape = SubResource("SphereShape3D_10w5p")
 
