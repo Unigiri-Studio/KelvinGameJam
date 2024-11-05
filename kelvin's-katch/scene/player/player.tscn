@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://civ6o0pdiqoww"]
+[gd_scene load_steps=15 format=3 uid="uid://civ6o0pdiqoww"]
 
-[ext_resource type="Script" path="res://script/player.gd" id="1_tpxmx"]
+[ext_resource type="Script" path="res://script/player/player.gd" id="1_tpxmx"]
 [ext_resource type="Texture2D" uid="uid://ctjdmpt7oee44" path="res://asset/sprite/draft/draftEmptyBoat.png" id="2_58rry"]
+[ext_resource type="PackedScene" uid="uid://bx1y1r6tmvlqx" path="res://scene/player/fishingLure.tscn" id="3_iht85"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_10w5p"]
 radius = 0.707046
@@ -105,7 +106,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kbjay"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_d7t3l"]
+top_radius = 5.0
+bottom_radius = 5.0
+height = 0.5
 
 [node name="player" type="CharacterBody3D"]
 script = ExtResource("1_tpxmx")
@@ -120,10 +124,16 @@ billboard = 1
 sprite_frames = SubResource("SpriteFrames_y5is7")
 animation = &"idleE"
 
-[node name="lure" type="Node3D" parent="."]
+[node name="fishingRing" type="Node3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 visible = false
 
-[node name="Sprite3D" type="Sprite3D" parent="lure"]
-pixel_size = 5.4841
-texture = SubResource("PlaceholderTexture2D_kbjay")
+[node name="accuracyRing" type="MeshInstance3D" parent="fishingRing"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.25)
+mesh = SubResource("CylinderMesh_d7t3l")
+
+[node name="fishingLure" parent="." instance=ExtResource("3_iht85")]
+unique_name_in_owner = true
+visible = false
