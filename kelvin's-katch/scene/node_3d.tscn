@@ -17,7 +17,7 @@ mesh = SubResource("PlaneMesh_a0hu6")
 transform = Transform3D(1, 0, 0, 0, 0.6407, 0.767792, 0, -0.767792, 0.6407, 0, 3.20156, 7.97109)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.74437, 0.667768, 0, -0.667768, 0.74437, 2.01022, 10.3033, 44.3158)
+transform = Transform3D(1, 0, 0, 0, 0.74437, 0.667768, 0, -0.667768, 0.74437, 1.81355, 31.2473, 28.4268)
 
 [node name="Fish" parent="." instance=ExtResource("1_efsbm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015, 0.01, -0.037)
