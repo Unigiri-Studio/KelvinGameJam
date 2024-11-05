@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://civ6o0pdiqoww"]
+[gd_scene load_steps=14 format=3 uid="uid://civ6o0pdiqoww"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_tpxmx"]
 [ext_resource type="Texture2D" uid="uid://ctjdmpt7oee44" path="res://asset/sprite/draft/draftEmptyBoat.png" id="2_58rry"]
@@ -105,6 +105,8 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kbjay"]
+
 [node name="player" type="CharacterBody3D"]
 script = ExtResource("1_tpxmx")
 
@@ -117,3 +119,11 @@ unique_name_in_owner = true
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_y5is7")
 animation = &"idleE"
+
+[node name="lure" type="Node3D" parent="."]
+unique_name_in_owner = true
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="lure"]
+pixel_size = 5.4841
+texture = SubResource("PlaceholderTexture2D_kbjay")

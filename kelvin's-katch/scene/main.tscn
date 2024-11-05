@@ -16,7 +16,8 @@ transform = Transform3D(0.883635, -0.243541, 0.399847, -0.123957, 0.701871, 0.70
 [node name="WorldEnvironment" type="WorldEnvironment" parent="world"]
 environment = SubResource("Environment_mkmn8")
 
-[node name="player" parent="." instance=ExtResource("1_amkwu")]
+[node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_amkwu")]
+camera = NodePath("../Camera")
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)
