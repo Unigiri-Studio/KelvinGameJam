@@ -7,13 +7,13 @@
 size = Vector3(1.94971, 1, 1)
 
 [node name="Fish" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0151588, 0.25, -0.0367261)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_lgh8h")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.22, 0, 0, 0, -9.61651e-09, 0.22, 0, -0.22, -9.61651e-09, 0.99054, 0, 0.400864)
+transform = Transform3D(-9.61651e-09, 0.22, 9.61651e-09, 0, -9.61651e-09, 0.22, 0.22, 9.61651e-09, 4.20351e-16, 0, 0, 0)
 texture = ExtResource("2_j3j6c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.56, 0, 0, 0, 1.56, 0, 0, 0, 1.56, 1.0885, 0, 0.62591)
+transform = Transform3D(1.56, 0, 0, 0, 1.56, 0, 0, 0, 1.56, 0, 0, 0)
 shape = SubResource("BoxShape3D_n5n0x")
