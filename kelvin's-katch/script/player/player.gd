@@ -55,7 +55,7 @@ func _physics_process(delta):
 			#clamp to max speed
 			if velocity.length() > maxSpeed:
 				velocity = velocity.normalized() * maxSpeed
-				
+			
 			# Moving the Character
 			move_and_slide()
 
