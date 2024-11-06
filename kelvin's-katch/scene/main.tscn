@@ -1,13 +1,11 @@
-[gd_scene load_steps=3 load_steps=3 format=3 uid="uid://b7ym30s3dqf1i"]
+[gd_scene load_steps=4 format=3 uid="uid://b7ym30s3dqf1i"]
 
 [ext_resource type="PackedScene" uid="uid://civ6o0pdiqoww" path="res://scene/player/player.tscn" id="1_amkwu"]
-[ext_resource type="PackedScene" uid="uid://d2etlvgppsc2r" path="res://scene/node_3d.tscn" id="2_yl1bk"]
-[ext_resource type="Script" path="res://scene/main.gd" id="1_s5pci"]
+[ext_resource type="Script" path="res://script/boid-demo/main.gd" id="1_s5pci"]
 
 [sub_resource type="Environment" id="Environment_mkmn8"]
 background_mode = 1
 background_color = Color(0.426014, 0.81733, 0.889096, 1)
-
 
 [node name="main" type="Node3D"]
 
@@ -25,5 +23,3 @@ camera = NodePath("../Camera")
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)
 script = ExtResource("1_s5pci")
-
-[node name="fish_demo" parent="." instance=ExtResource("2_yl1bk")]

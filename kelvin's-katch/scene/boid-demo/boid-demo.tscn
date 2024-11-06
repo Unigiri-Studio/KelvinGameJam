@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://lnb0s6qvpgd1"]
+
+[ext_resource type="PackedScene" uid="uid://d2etlvgppsc2r" path="res://scene/boid-demo/boid.tscn" id="1_i7ijg"]
+[ext_resource type="Script" path="res://script/boid-demo/main.gd" id="2_hoy0e"]
+
+[node name="Boid-demo" type="Node3D"]
+
+[node name="Node3D" parent="." instance=ExtResource("1_i7ijg")]
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)
+script = ExtResource("2_hoy0e")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2etlvgppsc2r"]
 
-[ext_resource type="PackedScene" uid="uid://ct2pno0e7p6v5" path="res://scene/fish.tscn" id="1_efsbm"]
-[ext_resource type="Script" path="res://scene/node_3d.gd" id="1_omqpn"]
+[ext_resource type="PackedScene" uid="uid://ct2pno0e7p6v5" path="res://scene/boid-demo/fish.tscn" id="1_efsbm"]
+[ext_resource type="Script" path="res://script/boid-demo/boid.gd" id="1_omqpn"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a0hu6"]
 
