@@ -11,13 +11,21 @@ config_version=5
 [application]
 
 config/name="Kelvin's Katch"
-run/main_scene="res://scene/main.tscn"
+run/main_scene="res://scene/menu/startMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(1, 1, 1, 1)
+boot_splash/image="res://asset/logo/Unigiri-small.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://icon.svg"
 
 [autoload]
 
 DrawLine3d="*res://script/global/DrawLine3D.gd"
+
+[gui]
+
+theme/custom="res://asset/theme/main.tres"
 
 [input]
 
