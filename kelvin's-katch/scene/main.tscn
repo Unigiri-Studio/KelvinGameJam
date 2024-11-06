@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7ym30s3dqf1i"]
+[gd_scene load_steps=3 format=3 uid="uid://b7ym30s3dqf1i"]
 
 [ext_resource type="PackedScene" uid="uid://civ6o0pdiqoww" path="res://scene/player/player.tscn" id="1_amkwu"]
-[ext_resource type="Script" path="res://script/boid-demo/main.gd" id="1_s5pci"]
 
 [sub_resource type="Environment" id="Environment_mkmn8"]
 background_mode = 1
@@ -18,8 +17,7 @@ transform = Transform3D(0.883635, -0.243541, 0.399847, -0.123957, 0.701871, 0.70
 environment = SubResource("Environment_mkmn8")
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_amkwu")]
-camera = NodePath("../Camera")
+camera = NodePath("Camera")
 
-[node name="Camera" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)
-script = ExtResource("1_s5pci")
