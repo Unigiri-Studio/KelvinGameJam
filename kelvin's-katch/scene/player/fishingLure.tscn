@@ -12,8 +12,10 @@ height = 0.25
 [node name="fishingLure" type="CharacterBody3D"]
 script = ExtResource("1_qegqy")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="bobberCol" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_6r5pw")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="bobber" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_el7me")
+
+[node name="fishingLine" type="MeshInstance3D" parent="."]
