@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 # Constants for movement and behavior
-const MIN_SPEED = 1.0
-const MAX_SPEED = 10.0
+const MIN_SPEED = 4.0
+const MAX_SPEED = 6.0
 const DIRECTION_CHANGE_INTERVAL = 0.5
 const SEPARATION_WEIGHT = 1.0
 const ALIGNMENT_WEIGHT = 1.0
@@ -53,11 +53,16 @@ func update_direction() -> void:
 	direction += separation * SEPARATION_WEIGHT + alignment * ALIGNMENT_WEIGHT + cohesion * COHESION_WEIGHT
 	direction = direction.normalized()
 
-# Apply movement based on current direction
+# Apply movement based on current direction and adjust rotation to face movement direction
 func apply_movement() -> void:
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 	velocity.y = 0
+
+	# Adjust rotation to face the direction of movement
+	if velocity.length() > 0.01: 
+		var target_position = global_position + velocity.normalized()
+		look_at(target_position, Vector3.UP)
 
 # Check bounds and reverse direction if out of bounds
 func check_bounds_and_reverse() -> void:
