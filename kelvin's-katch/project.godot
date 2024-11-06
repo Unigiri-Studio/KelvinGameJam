@@ -23,6 +23,11 @@ config/icon="res://icon.svg"
 
 DrawLine3d="*res://script/global/DrawLine3D.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [gui]
 
 theme/custom="res://asset/theme/main.tres"
