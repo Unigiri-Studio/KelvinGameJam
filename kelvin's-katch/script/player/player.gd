@@ -119,7 +119,7 @@ func changeState(newState: STATE) -> void:
 			var randomLurePos : Vector3 = getRandomPosInsideMesh(%accuracyRing)
 			#lure.global_position = lure.fishingRodTip.global_position #starting pos of lure
 			lure.global_position = randomLurePos
-			lure.fishingRodTip = get_node("fishingRodTipMarker")
+			lure.fishingRodTip = get_node("fishingRodTipMarker/tip" + DIRLOOKUP[dirState]) #start fishing line from marker in same facing direction
 			lure.visible = true
 			%fishingRing.visible = false
 			print("Waiting")
