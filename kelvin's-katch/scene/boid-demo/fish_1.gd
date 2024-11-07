@@ -3,7 +3,8 @@ extends CharacterBody3D
 # Constants for movement and behavior
 const MIN_SPEED = 4.0
 const MAX_SPEED = 6.0
-const DIRECTION_CHANGE_INTERVAL = 0.5
+const DIRECTION_CHANGE_INTERVAL = 2.0
+const STOP_TIME_INTERVAL = 0.5
 const SEPARATION_WEIGHT = 1.0
 const ALIGNMENT_WEIGHT = 1.0
 const COHESION_WEIGHT = 1.0
@@ -18,24 +19,43 @@ const Z_BOUND = Vector2(-95, 95)
 # Variables for direction and timing
 var speed = 0.0
 var time_since_direction_change = 0.0
+var time_since_stop = 0.0
+var is_stopped = false
 var direction = Vector3.ZERO
 
 func _ready() -> void:
-	add_to_group("boids1")
+	add_to_group("boids")
 	randomize()
 	initialize_random_direction()
 	initialize_random_speed()
 
 func _physics_process(delta: float) -> void:
+	# Update timers
 	time_since_direction_change += delta
+	time_since_stop += delta
 
-	if time_since_direction_change >= DIRECTION_CHANGE_INTERVAL:
-		update_direction()
-		time_since_direction_change = 0.0
+	# Handle stopping and direction updates
+	if is_stopped:
+		# If stop time interval is over, resume movement
+		if time_since_stop >= STOP_TIME_INTERVAL:
+			is_stopped = false
+			time_since_stop = 0.0
+		else:
+			# Calculate new direction only while stopped
+			if time_since_direction_change >= DIRECTION_CHANGE_INTERVAL:
+				update_direction()
+				time_since_direction_change = 0.0
+	else:
+		# Move in the pre-calculated direction without changing it
+		apply_movement()
+		check_bounds_and_reverse()
+		handle_collisions()
+		
+		# If movement time is up, switch to stop phase
+		if time_since_stop >= DIRECTION_CHANGE_INTERVAL:
+			is_stopped = true
+			time_since_stop = 0.0
 
-	apply_movement()
-	check_bounds_and_reverse()
-	handle_collisions()
 
 # Initialize random starting direction
 func initialize_random_direction() -> void:
@@ -86,7 +106,7 @@ func calculate_separation() -> Vector3:
 	var separation_vector = direction
 	var nearby_boid_count = 0
 
-	for other_boid in get_tree().get_nodes_in_group("boids1"):
+	for other_boid in get_tree().get_nodes_in_group("boids"):
 		if other_boid == self:
 			continue
 			
@@ -106,7 +126,7 @@ func calculate_alignment() -> Vector3:
 	var speed_sum = 0.0
 	var nearby_boid_count = 0
 
-	for other_boid in get_tree().get_nodes_in_group("boids1"):
+	for other_boid in get_tree().get_nodes_in_group("boids"):
 		if other_boid == self:
 			continue
 
@@ -130,7 +150,7 @@ func calculate_cohesion() -> Vector3:
 	var center_of_mass = Vector3.ZERO
 	var nearby_boid_count = 0
 
-	for other_boid in get_tree().get_nodes_in_group("boids1"):
+	for other_boid in get_tree().get_nodes_in_group("boids"):
 		if other_boid == self:
 			continue
 			
