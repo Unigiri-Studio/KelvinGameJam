@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct2pno0e7p6v5"]
+
+[ext_resource type="Script" path="res://scene/boid-demo/fish_linear.gd" id="1_62ipj"]
+[ext_resource type="Texture2D" uid="uid://b06cwvphhru8s" path="res://asset/sprite/fish/fish.png" id="2_nslgv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5n0x"]
+size = Vector3(1.94971, 1, 1)
+
+[node name="Fish" type="CharacterBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_62ipj")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-9.61651e-09, 0.22, 9.61651e-09, 0, -9.61651e-09, 0.22, 0.22, 9.61651e-09, 4.20351e-16, 0, 0, 0)
+texture = ExtResource("2_nslgv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.56, 0, 0, 0, 1.56, 0, 0, 0, 1.56, 0, 0, 0)
+shape = SubResource("BoxShape3D_n5n0x")

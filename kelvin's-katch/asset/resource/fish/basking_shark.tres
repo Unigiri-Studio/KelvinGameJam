@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="fish_class" load_steps=3 format=3 uid="uid://befo1awbugr6u"]
+
+[ext_resource type="Script" path="res://script/fish/fish_class.gd" id="1_0e46x"]
+[ext_resource type="Texture2D" uid="uid://cv3bkip8xp4ia" path="res://asset/sprite/fish/Basking_Shark.png" id="1_ejvs1"]
+
+[resource]
+script = ExtResource("1_0e46x")
+swiming_type = 1
+fish_sprite = ExtResource("1_ejvs1")
+speed = 10.0
+direction_change_interval = 0.1
+stop_time_interval = 0.0
+separation_weight = 1.0
+alignment_weight = 1.0
+cohesion_weight = 1.0
+separation_radius = 10.0
+alignment_radius = 10.0
+cohesion_radius = 10.0
+species = "basking_shark"

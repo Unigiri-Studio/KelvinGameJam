@@ -1,26 +1,42 @@
 extends Node3D
 
 var fish_scene = load("res://scene/boid-demo/fish.tscn")
-var fish1_scene = load("res://scene/boid-demo/fish1.tscn")
-const FISH_COUNT = 100  # number of fish
-const X_RANGE = Vector2(-90, 90)  # x-axis
-const Z_RANGE = Vector2(-90, 90)  # z-axis
+var cod_resource = load("res://asset/resource/fish/cod.tres")
+var tuna_resource = load("res://asset/resource/fish/tuna.tres")
+var squid_resource = load("res://asset/resource/fish/squid.tres")
+var basking_shark_resource = load("res://asset/resource/fish/basking_shark.tres")
+var flounder_resource = load("res://asset/resource/fish/flounder.tres")
+var gar_fish_resource = load("res://asset/resource/fish/gar_fish.tres")
+var mackerel_resource = load("res://asset/resource/fish/mackerel.tres")
+const FISH_COUNT = 16  # number of fish
+const X_RANGE = Vector2(-150, 150)  # x-axis
+const Z_RANGE = Vector2(-150, 150)  # z-axis
 const Y_POSITION = 2  # y-axis height
+const MIN_DISTANCE_BETWEEN_FISH = 20.0  
+
+var fish_species = ['basking_shark', 'cod', 'flounder', 'gar_fish', 'mackerel', 'squid', 'whiting', 'wrasse']
 
 func _ready() -> void:
-	if fish_scene:
-		for i in range(FISH_COUNT):
+	for i in range(fish_species.size()):
+		var fish_resource_location = "res://asset/resource/fish/" + fish_species[i]+".tres"
+		var fish_resource = load(fish_resource_location)
+		for j in range(FISH_COUNT):
 			var fish = fish_scene.instantiate()
-			var fish1 = fish1_scene.instantiate()
-			# randamly positioning the fish
-			fish.global_position = Vector3(randf_range(X_RANGE.x, X_RANGE.y), Y_POSITION, randf_range(Z_RANGE.x, Z_RANGE.y))
-			fish1.global_position = Vector3(randf_range(X_RANGE.x, X_RANGE.y), Y_POSITION, randf_range(Z_RANGE.x, Z_RANGE.y))
+			fish.fish_data = fish_resource.duplicate()
+			fish.global_position = get_random_position()
 			add_child(fish)
-			add_child(fish1)
-	else:
-		print("Failed to load fish scene")
 
+func get_random_position() -> Vector3:
+	var position
+	var is_position_valid = false
+	
+	while not is_position_valid:
+		position = Vector3(randf_range(X_RANGE.x, X_RANGE.y), Y_POSITION, randf_range(Z_RANGE.x, Z_RANGE.y))
+		is_position_valid = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+		for fish in get_children():
+			if fish.global_position.distance_to(position) < MIN_DISTANCE_BETWEEN_FISH:
+				is_position_valid = false
+				break
+
+	return position
