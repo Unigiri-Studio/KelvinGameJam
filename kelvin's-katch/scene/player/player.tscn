@@ -617,6 +617,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73, 2.165, 0)
 
 [node name="tipNW" type="Marker3D" parent="fishingRodTipMarker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.425, 4.96, 0)
-
-[node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)
