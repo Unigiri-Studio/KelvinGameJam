@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwxsdc4256f4f"
-path.s3tc="res://.godot/imported/movingBoat-kelvinless2.png-d8da51cdaec8a849f0f4e2a0245d0c66.s3tc.ctex"
+uid="uid://dcnn6k1lm3dp3"
+path.s3tc="res://.godot/imported/boat-kelvinlessMoving2.png-b6ba6d14a01bc41ba362db9242ba5dd6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://asset/sprite/player/movingBoat-kelvinless2.png"
-dest_files=["res://.godot/imported/movingBoat-kelvinless2.png-d8da51cdaec8a849f0f4e2a0245d0c66.s3tc.ctex"]
+source_file="res://asset/sprite/player/boat-kelvinlessMoving2.png"
+dest_files=["res://.godot/imported/boat-kelvinlessMoving2.png-b6ba6d14a01bc41ba362db9242ba5dd6.s3tc.ctex"]
 
 [params]
 

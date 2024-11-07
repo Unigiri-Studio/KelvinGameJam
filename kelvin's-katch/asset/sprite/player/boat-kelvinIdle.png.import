@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbf05p3qi16wh"
-path.s3tc="res://.godot/imported/idleBoat-kelvinless.png-085533e8d2995379f35314e1868b4f48.s3tc.ctex"
+uid="uid://dyqmwm0ouo6kf"
+path.s3tc="res://.godot/imported/boat-kelvinIdle.png-da12fc63beb9d89a52793af77b04f3e1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://asset/sprite/player/idleBoat-kelvinless.png"
-dest_files=["res://.godot/imported/idleBoat-kelvinless.png-085533e8d2995379f35314e1868b4f48.s3tc.ctex"]
+source_file="res://asset/sprite/player/boat-kelvinIdle.png"
+dest_files=["res://.godot/imported/boat-kelvinIdle.png-da12fc63beb9d89a52793af77b04f3e1.s3tc.ctex"]
 
 [params]
 

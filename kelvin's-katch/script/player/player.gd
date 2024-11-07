@@ -97,24 +97,29 @@ func changeState(newState: STATE) -> void:
 	state = newState
 	match state:
 		STATE.IDLE:
+			play_animation(STATELOOKUP[state] + DIRLOOKUP[dirState])
 			%fishingRing.visible = false
 			print("Idle")
 		STATE.SAILING:
 			%fishingRing.visible = false
 			print("Sailing")
 		STATE.AIMING:
+			play_animation(STATELOOKUP[state] + DIRLOOKUP[dirState])
 			%accuracyRing.scale = Vector3i(1,1,1)
 			%fishingRing.visible = true
 			lure.visible = false
 			print("Aiming")
 		STATE.CASTING:
+			play_animation(STATELOOKUP[state] + DIRLOOKUP[dirState])
 			ringTween = get_tree().create_tween()
 			ringTween.tween_property(%accuracyRing, "scale", minScale, shrinkDuration)
 			print("Casting")
 		STATE.WAITING:
+			play_animation(STATELOOKUP[state] + DIRLOOKUP[dirState])
 			var randomLurePos : Vector3 = getRandomPosInsideMesh(%accuracyRing)
 			#lure.global_position = lure.fishingRodTip.global_position #starting pos of lure
 			lure.global_position = randomLurePos
+			lure.fishingRodTip = get_node("fishingRodTipMarker/tip" + DIRLOOKUP[dirState]) #start fishing line from marker in same facing direction
 			lure.visible = true
 			%fishingRing.visible = false
 			print("Waiting")
