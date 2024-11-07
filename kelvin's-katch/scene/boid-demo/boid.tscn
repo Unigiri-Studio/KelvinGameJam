@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2etlvgppsc2r"]
+[gd_scene load_steps=3 format=3 uid="uid://d2etlvgppsc2r"]
 
-[ext_resource type="PackedScene" uid="uid://ct2pno0e7p6v5" path="res://scene/boid-demo/fish.tscn" id="1_efsbm"]
 [ext_resource type="Script" path="res://script/boid-demo/boid.gd" id="1_omqpn"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a0hu6"]
@@ -9,7 +8,7 @@
 script = ExtResource("1_omqpn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(100, 0, 0, 0, 2, 0, 0, 0, 100, 0, 0, 0)
+transform = Transform3D(150, 0, 0, 0, 2, 0, 0, 0, 150, 0, 0, 0)
 layers = 129
 mesh = SubResource("PlaneMesh_a0hu6")
 
@@ -18,6 +17,3 @@ transform = Transform3D(1, 0, 0, 0, 0.6407, 0.767792, 0, -0.767792, 0.6407, 0, 3
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.74437, 0.667768, 0, -0.667768, 0.74437, 1.81355, 31.2473, 28.4268)
-
-[node name="Fish" parent="." instance=ExtResource("1_efsbm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015, 0.01, -0.037)
