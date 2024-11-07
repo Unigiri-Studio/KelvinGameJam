@@ -8,7 +8,12 @@ var drag = 0.9 # Drag coefficient (should be between 0 and 1, where 1 is no drag
 
 #player states
 enum STATE {IDLE,SAILING,AIMING,CASTING,WAITING,CATCHED}
+const STATELOOKUP = ["idle","sailing","aiming","casting","waiting","catched"]
 var state: STATE = STATE.IDLE #base state
+#direction
+enum DIRSTATE {N,NE,E,SE,S,SW,W,NW}
+const DIRLOOKUP = ["N","NE","E","SE","S","SW","W","NW"]
+var dirState : DIRSTATE
 
 #fishing variables
 var fishPlane:Plane #used for fishing and for fish logic
@@ -22,6 +27,8 @@ var shrinkDuration = 5
 
 func _ready():
 	fishPlane = Plane(Vector3.UP, Vector3.ZERO)
+	%playerSprite.animation = 'idleS'
+	dirState = DIRSTATE.S
 	
 func _physics_process(delta):
 	match state:
@@ -125,22 +132,29 @@ func play_animation(animation_name: String) -> void:
 
 func faceDir(vec3 : Vector3) -> void:
 	vec3 = clampVector3(vec3)
-	if(vec3 == Vector3(0,0,-1)):
-		play_animation("idleN")
-	elif(vec3 == Vector3(0,0,1)):
-		play_animation("idleS")
-	elif(vec3 == Vector3(-1,0,0)):
-		play_animation("idleW")
-	elif(vec3 == Vector3(1,0,0)):
-		play_animation("idleE")
-	elif(vec3 == Vector3(1,0,-1)):
-		play_animation("idleNE")
-	elif(vec3 == Vector3(-1,0,1)):
-		play_animation("idleSW")
-	elif(vec3 == Vector3(-1,0,-1)):
-		play_animation("idleNW")
-	elif(vec3 == Vector3(1,0,1)):
-		play_animation("idleSE")
+	var pre : String = STATELOOKUP[state] #state as string
+	var curDir : DIRSTATE
+	match vec3:
+		Vector3(0,0,0): #base when no movement
+			curDir = dirState
+		Vector3(0,0,-1):
+			curDir = DIRSTATE.N
+		Vector3(0,0,1):
+			curDir = DIRSTATE.S
+		Vector3(-1,0,0):
+			curDir = DIRSTATE.W
+		Vector3(1,0,0):
+			curDir = DIRSTATE.E
+		Vector3(1,0,-1):
+			curDir = DIRSTATE.NE
+		Vector3(-1,0,1):
+			curDir = DIRSTATE.SW
+		Vector3(-1,0,-1):
+			curDir = DIRSTATE.NW
+		Vector3(1,0,1):
+			curDir = DIRSTATE.SE
+	dirState = curDir
+	play_animation(pre + DIRLOOKUP[dirState])
 
 func getRandomPosInsideMesh(mesh : MeshInstance3D) -> Vector3:
 	#using cartisean coodinates will get random point inside cylindarMesh

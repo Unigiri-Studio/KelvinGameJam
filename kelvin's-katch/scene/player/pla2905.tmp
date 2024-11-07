@@ -274,7 +274,6 @@ shape = SubResource("SphereShape3D_10w5p")
 
 [node name="playerSprite" type="AnimatedSprite3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_y5is7")
 animation = &"sailingN"
