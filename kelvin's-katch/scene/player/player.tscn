@@ -1,13 +1,80 @@
-[gd_scene load_steps=33 format=3 uid="uid://civ6o0pdiqoww"]
+[gd_scene load_steps=60 format=3 uid="uid://civ6o0pdiqoww"]
 
 [ext_resource type="Script" path="res://script/player/player.gd" id="1_tpxmx"]
+[ext_resource type="Texture2D" uid="uid://dyqmwm0ouo6kf" path="res://asset/sprite/player/boat-kelvinIdle.png" id="2_qjyb0"]
 [ext_resource type="Texture2D" uid="uid://2dvdwa1inupv" path="res://asset/sprite/player/boat-kelvinlessIdle.png" id="2_sbq5q"]
 [ext_resource type="PackedScene" uid="uid://bx1y1r6tmvlqx" path="res://scene/player/fishingLure.tscn" id="3_iht85"]
 [ext_resource type="Texture2D" uid="uid://drw066dtvmybp" path="res://asset/sprite/player/boat-kelvinlesssMoving1.png" id="3_xes3d"]
+[ext_resource type="Texture2D" uid="uid://cra4kor4o64yt" path="res://asset/sprite/player/boat-kelvinPreCast.png" id="3_y10bu"]
 [ext_resource type="Texture2D" uid="uid://dcnn6k1lm3dp3" path="res://asset/sprite/player/boat-kelvinlessMoving2.png" id="4_kt7dt"]
+[ext_resource type="Texture2D" uid="uid://u1atkoeb0x86" path="res://asset/sprite/player/boat-kelvinCast.png" id="7_be8xw"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_10w5p"]
 radius = 0.707046
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prg30"]
+atlas = ExtResource("2_qjyb0")
+region = Rect2(0, 2631, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kacof"]
+atlas = ExtResource("2_qjyb0")
+region = Rect2(1117, 0, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxfjn"]
+atlas = ExtResource("2_qjyb0")
+region = Rect2(0, 0, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yl1o2"]
+atlas = ExtResource("2_qjyb0")
+region = Rect2(0, 1754, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctiho"]
+atlas = ExtResource("2_qjyb0")
+region = Rect2(0, 877, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq5f3"]
+atlas = ExtResource("2_qjyb0")
+region = Rect2(1117, 877, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r81p4"]
+atlas = ExtResource("2_qjyb0")
+region = Rect2(1117, 1754, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qubfo"]
+atlas = ExtResource("2_qjyb0")
+region = Rect2(1117, 2631, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbc3i"]
+atlas = ExtResource("3_y10bu")
+region = Rect2(0, 2631, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j20yf"]
+atlas = ExtResource("3_y10bu")
+region = Rect2(1117, 0, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqxnj"]
+atlas = ExtResource("3_y10bu")
+region = Rect2(0, 0, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ams5"]
+atlas = ExtResource("3_y10bu")
+region = Rect2(0, 1754, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8wtl"]
+atlas = ExtResource("3_y10bu")
+region = Rect2(0, 877, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ttpt"]
+atlas = ExtResource("3_y10bu")
+region = Rect2(1117, 877, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v46v7"]
+atlas = ExtResource("3_y10bu")
+region = Rect2(1117, 1754, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xryfq"]
+atlas = ExtResource("3_y10bu")
+region = Rect2(1117, 2631, 1117, 877)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_peejh"]
 atlas = ExtResource("2_sbq5q")
@@ -105,46 +172,166 @@ region = Rect2(1117, 2631, 1117, 877)
 atlas = ExtResource("3_xes3d")
 region = Rect2(1117, 2631, 1117, 877)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mngim"]
+atlas = ExtResource("7_be8xw")
+region = Rect2(0, 2631, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvwlq"]
+atlas = ExtResource("7_be8xw")
+region = Rect2(1117, 0, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uw6pp"]
+atlas = ExtResource("7_be8xw")
+region = Rect2(0, 0, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlrn6"]
+atlas = ExtResource("7_be8xw")
+region = Rect2(0, 1754, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg6eo"]
+atlas = ExtResource("7_be8xw")
+region = Rect2(0, 877, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d855h"]
+atlas = ExtResource("7_be8xw")
+region = Rect2(1117, 877, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eumg4"]
+atlas = ExtResource("7_be8xw")
+region = Rect2(1117, 1754, 1117, 877)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3h2h"]
+atlas = ExtResource("7_be8xw")
+region = Rect2(1117, 2631, 1117, 877)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_y5is7"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prg30")
+}],
 "loop": true,
 "name": &"aimingE",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kacof")
+}],
 "loop": true,
 "name": &"aimingN",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxfjn")
+}],
 "loop": true,
 "name": &"aimingNE",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yl1o2")
+}],
 "loop": true,
 "name": &"aimingNW",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctiho")
+}],
 "loop": true,
 "name": &"aimingS",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wq5f3")
+}],
 "loop": true,
 "name": &"aimingSE",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r81p4")
+}],
 "loop": true,
 "name": &"aimingSW",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qubfo")
+}],
 "loop": true,
 "name": &"aimingW",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbc3i")
+}],
+"loop": true,
+"name": &"castingE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j20yf")
+}],
+"loop": true,
+"name": &"castingN",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sqxnj")
+}],
+"loop": true,
+"name": &"castingNE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ams5")
+}],
+"loop": true,
+"name": &"castingNW",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8wtl")
+}],
+"loop": true,
+"name": &"castingS",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ttpt")
+}],
+"loop": true,
+"name": &"castingSE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v46v7")
+}],
+"loop": true,
+"name": &"castingSW",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xryfq")
+}],
+"loop": true,
+"name": &"castingW",
 "speed": 5.0
 }, {
 "frames": [{
@@ -298,6 +485,70 @@ animations = [{
 "loop": true,
 "name": &"sailingW",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mngim")
+}],
+"loop": true,
+"name": &"waitingE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvwlq")
+}],
+"loop": true,
+"name": &"waitingN",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uw6pp")
+}],
+"loop": true,
+"name": &"waitingNE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlrn6")
+}],
+"loop": true,
+"name": &"waitingNW",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg6eo")
+}],
+"loop": true,
+"name": &"waitingS",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d855h")
+}],
+"loop": true,
+"name": &"waitingSE",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eumg4")
+}],
+"loop": true,
+"name": &"waitingSW",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3h2h")
+}],
+"loop": true,
+"name": &"waitingW",
+"speed": 5.0
 }]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_d7t3l"]
@@ -317,7 +568,7 @@ unique_name_in_owner = true
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_y5is7")
-animation = &"aimingNW"
+animation = &"waitingW"
 
 [node name="fishingRing" type="Node3D" parent="."]
 unique_name_in_owner = true
