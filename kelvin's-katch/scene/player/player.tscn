@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://civ6o0pdiqoww"]
+[gd_scene load_steps=61 format=3 uid="uid://civ6o0pdiqoww"]
 
 [ext_resource type="Script" path="res://script/player/player.gd" id="1_tpxmx"]
 [ext_resource type="Texture2D" uid="uid://dyqmwm0ouo6kf" path="res://asset/sprite/player/boat-kelvinIdle.png" id="2_qjyb0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cra4kor4o64yt" path="res://asset/sprite/player/boat-kelvinPreCast.png" id="3_y10bu"]
 [ext_resource type="Texture2D" uid="uid://dcnn6k1lm3dp3" path="res://asset/sprite/player/boat-kelvinlessMoving2.png" id="4_kt7dt"]
 [ext_resource type="Texture2D" uid="uid://u1atkoeb0x86" path="res://asset/sprite/player/boat-kelvinCast.png" id="7_be8xw"]
+[ext_resource type="Texture2D" uid="uid://dl4m7vgpkw2ad" path="res://asset/sprite/Target.png" id="8_hbqe6"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_10w5p"]
 radius = 0.707046
@@ -578,7 +579,13 @@ visible = false
 [node name="accuracyRing" type="MeshInstance3D" parent="fishingRing"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.25)
+visible = false
 mesh = SubResource("CylinderMesh_d7t3l")
+
+[node name="target" type="Sprite3D" parent="fishingRing"]
+unique_name_in_owner = true
+pixel_size = 0.0063
+texture = ExtResource("8_hbqe6")
 
 [node name="fishingLure" parent="." node_paths=PackedStringArray("fishingRodTip") instance=ExtResource("3_iht85")]
 unique_name_in_owner = true

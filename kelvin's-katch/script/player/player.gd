@@ -21,6 +21,7 @@ var fishPlane:Plane #used for fishing and for fish logic
 
 #lure accuracy variables
 var ringTween: Tween = null
+var targetTween : Tween = null
 var minScale : Vector3 = Vector3(0.1,0.1,0.1)
 var shrinkDuration = 5
 @onready var lure = %fishingLure
@@ -85,6 +86,8 @@ func _physics_process(delta):
 			if !Input.is_action_pressed("castRod"): #while focusing lure location
 				if ringTween:
 					ringTween.stop()
+				if targetTween:
+					targetTween.stop()
 				changeState(STATE.WAITING)
 			
 		STATE.WAITING:
@@ -106,13 +109,16 @@ func changeState(newState: STATE) -> void:
 		STATE.AIMING:
 			play_animation(STATELOOKUP[state] + DIRLOOKUP[dirState])
 			%accuracyRing.scale = Vector3i(1,1,1)
+			%target.scale = Vector3(1,1,1)
 			%fishingRing.visible = true
 			lure.visible = false
 			print("Aiming")
 		STATE.CASTING:
 			play_animation(STATELOOKUP[state] + DIRLOOKUP[dirState])
 			ringTween = get_tree().create_tween()
+			targetTween = get_tree().create_tween()
 			ringTween.tween_property(%accuracyRing, "scale", minScale, shrinkDuration)
+			targetTween.tween_property(%target,"scale",minScale,shrinkDuration)
 			print("Casting")
 		STATE.WAITING:
 			play_animation(STATELOOKUP[state] + DIRLOOKUP[dirState])
