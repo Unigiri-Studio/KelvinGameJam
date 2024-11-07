@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b06cwvphhru8s"
-path.s3tc="res://.godot/imported/fish.png-363e9d3c62509df54f335ee17b5ede6c.s3tc.ctex"
+path.s3tc="res://.godot/imported/fish.png-fa46929cc2d228c3101f48d8cc03031f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/sprite/fish.png"
-dest_files=["res://.godot/imported/fish.png-363e9d3c62509df54f335ee17b5ede6c.s3tc.ctex"]
+source_file="res://asset/sprite/fish/fish.png"
+dest_files=["res://.godot/imported/fish.png-fa46929cc2d228c3101f48d8cc03031f.s3tc.ctex"]
 
 [params]
 
