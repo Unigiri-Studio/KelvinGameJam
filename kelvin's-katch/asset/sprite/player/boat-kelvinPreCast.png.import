@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://eytpkajaspsl"
-path="res://.godot/imported/idleBoat-kelvin.png-3aed6e6cc7c82a1399b5ff7359c93a80.ctex"
+uid="uid://cra4kor4o64yt"
+path="res://.godot/imported/boat-kelvinPreCast.png-98aeb6c0bd961d949b0018b3dd252505.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/sprite/player/idleBoat-kelvin.png"
-dest_files=["res://.godot/imported/idleBoat-kelvin.png-3aed6e6cc7c82a1399b5ff7359c93a80.ctex"]
+source_file="res://asset/sprite/player/boat-kelvinPreCast.png"
+dest_files=["res://.godot/imported/boat-kelvinPreCast.png-98aeb6c0bd961d949b0018b3dd252505.ctex"]
 
 [params]
 
