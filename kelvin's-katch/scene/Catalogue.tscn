@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://byoia042d5o5"]
+[gd_scene load_steps=5 format=3 uid="uid://byoia042d5o5"]
 
 [ext_resource type="Script" path="res://script/catalogue/catalogue.gd" id="1_5kvlg"]
 [ext_resource type="Texture2D" uid="uid://cxx4kowtoban7" path="res://assets/exit.png" id="1_xdwo8"]
+[ext_resource type="Texture2D" uid="uid://cevaf7ch80nny" path="res://assets/fishies/Sea Fish Silhouette.png" id="3_rqfty"]
+[ext_resource type="Texture2D" uid="uid://dw6b5tutkkm0i" path="res://assets/Enter Button Icon.svg" id="4_dn4hb"]
 
 [node name="Catalog" type="Control"]
 layout_mode = 3
@@ -19,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.151276, 0.151276, 0.151276, 1)
+color = Color(0.129581, 0.34046, 0.395709, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -37,13 +39,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
-[node name="TabBar" type="TabBar" parent="TabContainer"]
+[node name="Pause menu" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="Button" type="Button" parent="TabContainer/TabBar"]
+[node name="Button" type="Button" parent="TabContainer/Pause menu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -60,12 +63,11 @@ icon = ExtResource("1_xdwo8")
 flat = true
 expand_icon = true
 
-[node name="TabBar2" type="TabBar" parent="TabContainer"]
-visible = false
+[node name="Catalogue" type="TabBar" parent="TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Button" type="Button" parent="TabContainer/TabBar2"]
+[node name="Button" type="Button" parent="TabContainer/Catalogue"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -82,28 +84,290 @@ icon = ExtResource("1_xdwo8")
 flat = true
 expand_icon = true
 
-[node name="TabBar3" type="TabBar" parent="TabContainer"]
-visible = false
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Catalogue"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 106.0
+offset_right = 1116.0
+offset_bottom = 560.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Catalogue/ScrollContainer"]
 layout_mode = 2
-metadata/_tab_index = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="TabContainer/TabBar3"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -548.0
-offset_top = -291.5
-offset_right = -418.0
-offset_bottom = -230.5
-grow_horizontal = 2
-grow_vertical = 2
-icon = ExtResource("1_xdwo8")
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Mackerel"
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(178.91, 27.13)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_rqfty")
+expand_mode = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 79.37)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(0, 64.36)
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+placeholder_text = "Enter average size"
+max_length = 20
+expand_to_text_length = true
+
+[node name="Button" type="Button" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(68.19, 24.47)
+layout_mode = 2
+icon = ExtResource("4_dn4hb")
 flat = true
 expand_icon = true
 
-[connection signal="pressed" from="TabContainer/TabBar/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="TabContainer/TabBar2/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="TabContainer/TabBar3/Button" to="." method="_on_button_pressed"]
+[node name="MarginContainer2" type="MarginContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Mahi Mahi"
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(178.91, 27.13)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_rqfty")
+expand_mode = 4
+
+[node name="MarginContainer3" type="MarginContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Haddock"
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(178.91, 27.13)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_rqfty")
+expand_mode = 4
+
+[node name="MarginContainer4" type="MarginContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Tuna"
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer4/VBoxContainer"]
+custom_minimum_size = Vector2(178.91, 27.13)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_rqfty")
+expand_mode = 4
+
+[node name="MarginContainer5" type="MarginContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer5"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer5/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Squid"
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer5/VBoxContainer"]
+custom_minimum_size = Vector2(178.91, 27.13)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_rqfty")
+expand_mode = 4
+
+[node name="MarginContainer6" type="MarginContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer6"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer6/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Swordfish"
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer6/VBoxContainer"]
+custom_minimum_size = Vector2(178.91, 27.13)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_rqfty")
+expand_mode = 4
+
+[node name="MarginContainer7" type="MarginContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer7"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer7/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Basking Shark"
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer7/VBoxContainer"]
+custom_minimum_size = Vector2(178.91, 27.13)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_rqfty")
+expand_mode = 4
+
+[node name="MarginContainer8" type="MarginContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer8"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer8/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Crab"
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer8/VBoxContainer"]
+custom_minimum_size = Vector2(178.91, 27.13)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_rqfty")
+expand_mode = 4
+
+[node name="MarginContainer9" type="MarginContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer9"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer9/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Uni"
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer9/VBoxContainer"]
+custom_minimum_size = Vector2(178.91, 27.13)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_rqfty")
+expand_mode = 4
+
+[node name="MarginContainer10" type="MarginContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer10"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer10/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Monkfish"
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer10/VBoxContainer"]
+custom_minimum_size = Vector2(178.91, 27.13)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_rqfty")
+expand_mode = 4
+
+[node name="MarginContainer11" type="MarginContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer11"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer11/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Mantaray"
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer11/VBoxContainer"]
+custom_minimum_size = Vector2(178.91, 27.13)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_rqfty")
+expand_mode = 4
+
+[node name="MarginContainer12" type="MarginContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer12"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer12/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+text = "Pike"
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Catalogue/ScrollContainer/VBoxContainer/MarginContainer12/VBoxContainer"]
+custom_minimum_size = Vector2(178.91, 27.13)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_rqfty")
+expand_mode = 4
+
+[connection signal="pressed" from="TabContainer/Pause menu/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="TabContainer/Catalogue/Button" to="." method="_on_button_pressed"]
