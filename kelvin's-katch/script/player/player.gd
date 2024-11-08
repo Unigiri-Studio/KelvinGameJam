@@ -28,6 +28,7 @@ var shrinkDuration = 5
 
 #catched variables
 @onready var fish_caught_popup = preload("res://scene/menu/fish_caught_screen.tscn").instantiate()
+#var canFish : bool = true
 
 func _ready():
 	fishPlane = Plane(Vector3.UP, Vector3.ZERO)
@@ -101,7 +102,7 @@ func _physics_process(delta):
 			if Input.is_action_just_pressed("castRod"):
 				fish_caught_popup.hide()
 				changeState(STATE.AIMING)
-			
+
 #helper functions
 func changeState(newState: STATE) -> void:
 	state = newState

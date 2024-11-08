@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq6xfyycptl27"]
+
+[ext_resource type="Theme" uid="uid://crcl4jjlnol8p" path="res://asset/theme/title.tres" id="1_wlhjx"]
+
+[node name="Catalogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="catalogueToggle" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 238.0
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 150
+action_mode = 0
+text = "☰"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 224.0
+offset_right = 720.0
+offset_bottom = 243.0
+theme = ExtResource("1_wlhjx")
+text = "Hello"

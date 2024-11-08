@@ -25,6 +25,7 @@ var current_fishies : Array = []
 
 
 func _ready() -> void:
+	%Catalogue.hide()
 	updateFishBounds() # init fish bounds
 	populate_fish_species("res://asset/resource/fish/") #setup
 	initOcean()
@@ -121,3 +122,12 @@ func populate_fish_species(SpeciesDir : String):
 			speciesName = dir.get_next()
 	else:
 		print("error: cannot get Species Directory")
+
+
+func _on_catalogue_button_pressed():
+	if !%Catalogue.visible: #if catalogue is not visible
+		%Catalogue.show()
+		Engine.time_scale = 0 # pause game
+	else:
+		%Catalogue.hide()
+		Engine.time_scale = 1 # unpause game
