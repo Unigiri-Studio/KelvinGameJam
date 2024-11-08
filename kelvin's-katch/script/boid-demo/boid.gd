@@ -1,6 +1,6 @@
 extends Node3D
 
-var fish_scene = load("res://scene/boid-demo/fish.tscn")
+var fish_scene = load("res://scene/fish/fish.tscn")
 const FISH_COUNT = 50  # max number of fish
 const X_RANGE = Vector2(-150, 150)  # x-axis
 const Z_RANGE = Vector2(-150, 150)  # z-axis

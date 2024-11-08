@@ -31,4 +31,6 @@ unique_name_in_owner = true
 wait_time = 0.25
 autostart = true
 
+[node name="fishContainer" type="Node3D" parent="."]
+
 [connection signal="timeout" from="waveTimer" to="." method="_on_wave_timer_timeout"]
