@@ -10,6 +10,7 @@ background_color = Color(0.426014, 0.81733, 0.889096, 1)
 [node name="main" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_vhm4e")
 player = NodePath("player")
+max_fish = 100
 
 [node name="world" type="Node3D" parent="."]
 
@@ -30,5 +31,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 unique_name_in_owner = true
 wait_time = 0.25
 autostart = true
+
+[node name="fishContainer" type="Node3D" parent="."]
 
 [connection signal="timeout" from="waveTimer" to="." method="_on_wave_timer_timeout"]

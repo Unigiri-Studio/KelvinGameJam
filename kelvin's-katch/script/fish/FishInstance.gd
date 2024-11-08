@@ -6,8 +6,8 @@ extends Node3D
 const CLOSE_DISTANCE = 4.0
 
 # Constants for movement bounds
-const X_BOUND = Vector2(-150, 150)
-const Z_BOUND = Vector2(-150, 150)
+var X_BOUND = Vector2(-150, 150)
+var Z_BOUND = Vector2(-150, 150)
 
 # Fish's movement direction and speed
 var velocity = Vector3.ZERO
