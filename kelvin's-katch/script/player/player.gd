@@ -26,8 +26,13 @@ var minScale : Vector3 = Vector3(0.1,0.1,0.1)
 var shrinkDuration = 5
 @onready var lure = %fishingLure
 
+#catched variables
+@onready var fish_caught_popup = preload("res://scene/menu/fish_caught_screen.tscn").instantiate()
+
 func _ready():
 	fishPlane = Plane(Vector3.UP, Vector3.ZERO)
+	fish_caught_popup.hide()
+	add_child(fish_caught_popup)
 	%playerSprite.animation = 'idleS'
 	dirState = DIRSTATE.S
 	
@@ -94,6 +99,7 @@ func _physics_process(delta):
 				changeState(STATE.AIMING)
 		STATE.CATCHED:
 			if Input.is_action_just_pressed("castRod"):
+				fish_caught_popup.hide()
 				changeState(STATE.AIMING)
 			
 #helper functions
@@ -141,6 +147,7 @@ func changeState(newState: STATE) -> void:
 			%fishingRing.visible = false
 			print("Waiting")
 		STATE.CATCHED:
+			fish_caught_popup.show()
 			print("Catched")
 
 func clampVector3(vec3: Vector3) -> Vector3:
@@ -203,5 +210,9 @@ func _on_catch_area_entered(body):
 	if state == STATE.WAITING:
 		if body.name == "player":
 			changeState(STATE.AIMING)
+			return
+		fish_caught_popup.sprite = body.fish_data.fish_sprite
+		fish_caught_popup.species = body.fish_data.species
+		fish_caught_popup.fishSize = body.fish_data.generate_random_size()
 		get_parent().removeFish(body)
 		changeState(STATE.CATCHED)

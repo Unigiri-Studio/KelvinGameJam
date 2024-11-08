@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://db8j4jx0j3n56"
-path="res://.godot/imported/Mackerel_.png-bce9be5e6065003bdfcb7cb844888811.ctex"
+path="res://.godot/imported/Mackerel.png-2037fe5897bde2303ee4a381f6c05515.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/sprite/fish/Mackerel_.png"
-dest_files=["res://.godot/imported/Mackerel_.png-bce9be5e6065003bdfcb7cb844888811.ctex"]
+source_file="res://asset/sprite/fish/Mackerel.png"
+dest_files=["res://.godot/imported/Mackerel.png-2037fe5897bde2303ee4a381f6c05515.ctex"]
 
 [params]
 

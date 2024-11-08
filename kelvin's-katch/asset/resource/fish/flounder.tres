@@ -18,3 +18,4 @@ separation_radius = 20.0
 alignment_radius = 20.0
 cohesion_radius = 20.0
 species = "flounder"
+avg_size = 45
