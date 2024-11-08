@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="fish_class" load_steps=3 format=3 uid="uid://b8xtri8posilo"]
+[gd_resource type="Resource" script_class="fish_class" load_steps=4 format=3 uid="uid://b8xtri8posilo"]
 
 [ext_resource type="Script" path="res://script/fish/fish_class.gd" id="1_b2mrc"]
 [ext_resource type="Texture2D" uid="uid://ckci4cbcigu2t" path="res://asset/sprite/fish/Flounder.png" id="1_mi1t6"]
+[ext_resource type="Texture2D" uid="uid://6rel07hb2cbi" path="res://asset/sprite/fish/blur-full.png" id="3_ut5jq"]
 
 [resource]
 script = ExtResource("1_b2mrc")
 swiming_type = 1
 fish_sprite = ExtResource("1_mi1t6")
+swimming_sprite = ExtResource("3_ut5jq")
 speed = 5.0
 depth = 2.02
 direction_change_interval = 0.3

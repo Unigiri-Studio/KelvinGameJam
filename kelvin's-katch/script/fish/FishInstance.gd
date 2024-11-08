@@ -27,12 +27,12 @@ func _ready() -> void:
 		
 		update_interval = randf_range(0.1, 0.5)
 		
-		if fish_data.fish_sprite != null:
+		if fish_data.swimming_sprite != null:
 			var sprite = Sprite3D.new()
-			sprite.texture = fish_data.fish_sprite
+			sprite.texture = fish_data.swimming_sprite
 			match fish_data.swiming_type:
 				1:
-					sprite.rotation_degrees = Vector3(-90, -90, 0)
+					sprite.rotation_degrees = Vector3(-90, 0, 0)
 				2: 
 					sprite.rotation_degrees = Vector3(-90, 0, 0)
 			add_child(sprite)

@@ -13,7 +13,7 @@ var waveDistance : int = 50
 @onready var fishContainer = $fishContainer
 var fish_scene = load("res://scene/fish/fish.tscn")
 var total_fish : int = 0
-const MIN_DISTANCE_BETWEEN_FISH = 20.0
+const MIN_DISTANCE_BETWEEN_FISH = 25.0
 #fish bounds
 var x_range : Vector2  # x-axis
 var z_range : Vector2  # z-axis
