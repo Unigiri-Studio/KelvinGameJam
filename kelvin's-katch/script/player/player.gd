@@ -190,4 +190,5 @@ func _on_catch_area_entered(body):
 	if state == STATE.WAITING:
 		if body.name == "player":
 			changeState(STATE.AIMING)
-		print(body)
+		get_parent().removeFish(body)
+		changeState(STATE.AIMING)

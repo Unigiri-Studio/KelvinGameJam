@@ -5,7 +5,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_n5n0x"]
 size = Vector3(1.94971, 1, 1)
 
-[node name="fish" type="CharacterBody3D" groups=["fish"]]
+[node name="fish" type="CharacterBody3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_ukw5y")
 

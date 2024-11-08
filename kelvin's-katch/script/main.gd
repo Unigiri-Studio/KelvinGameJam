@@ -33,6 +33,9 @@ func _ready() -> void:
 func _process(delta):
 	updateFishBounds()#update fish bounds
 	total_fish = current_fishies.size() #update total fish in main
+	while total_fish < max_fish:
+		spawnRandomFish()
+		total_fish += 1
 
 ## wave spawning logic
 func _on_wave_timer_timeout():
@@ -47,16 +50,19 @@ func _on_wave_timer_timeout():
 
 func initOcean():
 	for i in range(max_fish):
-		var randomFishInd = randi_range(0,len(fish_species_resource_path)-1)
-		var speciesName = ""
-		for key in fish_species_name.keys():
-			if fish_species_name[key] == randomFishInd:
-				speciesName = key
-				break
-		if (speciesName == ""):
-			print("could not find a fish")
+		spawnRandomFish()
+
+func spawnRandomFish():
+	var randomFishInd = randi_range(0,len(fish_species_resource_path)-1)
+	var speciesName = ""
+	for key in fish_species_name.keys():
+		if fish_species_name[key] == randomFishInd:
+			speciesName = key
 			break
-		spawnFish(speciesName)
+	if (speciesName == ""):
+		print("could not find a fish")
+		return
+	spawnFish(speciesName)
 
 func spawnFish(species : String):
 	var fish = fish_scene.instantiate()
@@ -69,6 +75,7 @@ func spawnFish(species : String):
 	
 func removeFish(fish_instance):
 	if(fish_instance in current_fishies):
+		fish_instance.queue_free()
 		current_fishies.erase(fish_instance)
 
 func updateFishBounds():
