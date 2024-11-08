@@ -28,7 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 
 [node name="waveTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.5
+wait_time = 0.25
 autostart = true
 
 [connection signal="timeout" from="waveTimer" to="." method="_on_wave_timer_timeout"]
