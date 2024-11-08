@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 DrawLine3d="*res://script/global/DrawLine3D.gd"
+Glubal="*res://script/global/glubal.gd"
 
 [display]
 

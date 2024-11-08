@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmpbx4ydh3kd6"]
+
+[ext_resource type="Theme" uid="uid://crcl4jjlnol8p" path="res://asset/theme/title.tres" id="1_86irr"]
+[ext_resource type="Script" path="res://script/menu/fish_caught_screen.gd" id="1_uvthq"]
+
+[node name="fishCaughtScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uvthq")
+
+[node name="fishSprite" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="fishSpecies" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_86irr")
+text = "Species"
+
+[node name="fishSize" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_86irr")
+horizontal_alignment = 1

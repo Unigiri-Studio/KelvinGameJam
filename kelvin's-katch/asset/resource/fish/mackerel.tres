@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="fish_class" load_steps=3 format=3 uid="uid://5ikifxf447vy"]
 
 [ext_resource type="Script" path="res://script/fish/fish_class.gd" id="1_o8ktn"]
-[ext_resource type="Texture2D" uid="uid://db8j4jx0j3n56" path="res://asset/sprite/fish/Mackerel_.png" id="1_oypp6"]
+[ext_resource type="Texture2D" uid="uid://db8j4jx0j3n56" path="res://asset/sprite/fish/Mackerel.png" id="1_oypp6"]
 
 [resource]
 script = ExtResource("1_o8ktn")
@@ -18,3 +18,4 @@ separation_radius = 20.0
 alignment_radius = 20.0
 cohesion_radius = 20.0
 species = "mackerel"
+avg_size = 38

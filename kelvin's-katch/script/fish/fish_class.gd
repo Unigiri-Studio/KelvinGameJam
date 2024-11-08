@@ -16,6 +16,7 @@ class_name fish_class
 @export var alignment_radius: float
 @export var cohesion_radius: float
 @export var species: String
+@export var avg_size:int
 
 # Variables for direction and timing
 var time_since_direction_change = 0.0
@@ -36,3 +37,7 @@ func initialize_random_direction() -> void:
 func update_direction(separation: Vector3, alignment: Vector3, cohesion: Vector3) -> void:
 	direction += separation * separation_weight + alignment * alignment_weight + cohesion * cohesion_weight
 	direction = direction.normalized()
+	
+func generate_random_size():
+	var size = randi_range(avg_size-Glubal.species_size_toerance,avg_size+Glubal.species_size_toerance)
+	return clamp(size,1,avg_size+Glubal.species_size_toerance)
