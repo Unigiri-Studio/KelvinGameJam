@@ -75,19 +75,18 @@ func _physics_process(delta):
 			var worldPosition = fishPlane.intersects_ray(
 				camera.project_ray_origin(get_viewport().get_mouse_position()),
 				camera.project_ray_normal(get_viewport().get_mouse_position()))
-			
 			#update lure location
 			%fishingRing.global_position = worldPosition
+			
+			#charge animation logic
+			if(%target.scale.x <= 0.8):#if target is small, play casting anim
+				play_animation(STATELOOKUP[3] + DIRLOOKUP[dirState])
 			
 			if Input.is_action_just_pressed("castRod"):
 				changeState(STATE.CASTING)
 		
 		STATE.CASTING:
-			if !Input.is_action_pressed("castRod"): #while focusing lure location
-				if ringTween:
-					ringTween.stop()
-				if targetTween:
-					targetTween.stop()
+			if Input.is_action_just_released("castRod"):
 				changeState(STATE.WAITING)
 			
 		STATE.WAITING:
@@ -101,6 +100,12 @@ func changeState(newState: STATE) -> void:
 	match state:
 		STATE.IDLE:
 			play_animation(STATELOOKUP[state] + DIRLOOKUP[dirState])
+			%accuracyRing.scale = Vector3i(1,1,1)
+			%target.scale = Vector3(1,1,1)
+			if ringTween:
+				ringTween.stop()
+			if targetTween:
+				targetTween.stop()
 			%fishingRing.visible = false
 			print("Idle")
 		STATE.SAILING:
@@ -108,21 +113,25 @@ func changeState(newState: STATE) -> void:
 			print("Sailing")
 		STATE.AIMING:
 			play_animation(STATELOOKUP[state] + DIRLOOKUP[dirState])
-			%accuracyRing.scale = Vector3i(1,1,1)
-			%target.scale = Vector3(1,1,1)
 			%fishingRing.visible = true
 			lure.visible = false
-			print("Aiming")
-		STATE.CASTING:
-			play_animation(STATELOOKUP[state] + DIRLOOKUP[dirState])
+			%accuracyRing.scale = Vector3i(1,1,1)
+			%target.scale = Vector3(1,1,1)
 			ringTween = get_tree().create_tween()
 			targetTween = get_tree().create_tween()
 			ringTween.tween_property(%accuracyRing, "scale", minScale, shrinkDuration)
 			targetTween.tween_property(%target,"scale",minScale,shrinkDuration)
+			print("Aiming")
+		STATE.CASTING:
+			play_animation(STATELOOKUP[state] + DIRLOOKUP[dirState])
 			print("Casting")
 		STATE.WAITING:
 			play_animation(STATELOOKUP[state] + DIRLOOKUP[dirState])
 			var randomLurePos : Vector3 = getRandomPosInsideMesh(%accuracyRing)
+			if ringTween:
+				ringTween.stop()
+			if targetTween:
+				targetTween.stop()
 			#lure.global_position = lure.fishingRodTip.global_position #starting pos of lure
 			lure.global_position = randomLurePos
 			lure.fishingRodTip = get_node("fishingRodTipMarker/tip" + DIRLOOKUP[dirState]) #start fishing line from marker in same facing direction
@@ -185,7 +194,7 @@ func getRandomPosInsideMesh(mesh : MeshInstance3D) -> Vector3:
 	
 	return mesh.global_position + Vector3(cartX,cartY,cartZ)
 
-
+#fishing function
 func _on_catch_area_entered(body):
 	if state == STATE.WAITING:
 		if body.name == "player":
