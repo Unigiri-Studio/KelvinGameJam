@@ -92,7 +92,9 @@ func _physics_process(delta):
 		STATE.WAITING:
 			if Input.is_action_just_pressed("castRod"):
 				changeState(STATE.AIMING)
-			
+		STATE.CATCHED:
+			if Input.is_action_just_pressed("castRod"):
+				changeState(STATE.AIMING)
 			
 #helper functions
 func changeState(newState: STATE) -> void:
@@ -138,6 +140,8 @@ func changeState(newState: STATE) -> void:
 			lure.visible = true
 			%fishingRing.visible = false
 			print("Waiting")
+		STATE.CATCHED:
+			print("Catched")
 
 func clampVector3(vec3: Vector3) -> Vector3:
 	return Vector3(
@@ -200,4 +204,4 @@ func _on_catch_area_entered(body):
 		if body.name == "player":
 			changeState(STATE.AIMING)
 		get_parent().removeFish(body)
-		changeState(STATE.AIMING)
+		changeState(STATE.CATCHED)
