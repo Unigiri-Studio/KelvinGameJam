@@ -26,16 +26,13 @@ var current_fishies : Array = []
 
 func _ready() -> void:
 	updateFishBounds() # init fish bounds
-	populate_fish_species("res://asset/resource/fish/")
-	spawnFish("basking_shark")
-	spawnFish("basking_shark")
-	spawnFish("basking_shark")
-	removeFish(current_fishies[0])
+	populate_fish_species("res://asset/resource/fish/") #setup
+	initOcean()
+
 
 func _process(delta):
 	updateFishBounds()#update fish bounds
 	total_fish = current_fishies.size() #update total fish in main
-	print(total_fish)
 
 ## wave spawning logic
 func _on_wave_timer_timeout():
@@ -47,6 +44,19 @@ func _on_wave_timer_timeout():
 ##################################
 #helper functions
 ##################################
+
+func initOcean():
+	for i in range(max_fish):
+		var randomFishInd = randi_range(0,len(fish_species_resource_path)-1)
+		var speciesName = ""
+		for key in fish_species_name.keys():
+			if fish_species_name[key] == randomFishInd:
+				speciesName = key
+				break
+		if (speciesName == ""):
+			print("could not find a fish")
+			break
+		spawnFish(speciesName)
 
 func spawnFish(species : String):
 	var fish = fish_scene.instantiate()
