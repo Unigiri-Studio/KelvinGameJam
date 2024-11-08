@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="fish_class" load_steps=3 format=3 uid="uid://befo1awbugr6u"]
+[gd_resource type="Resource" script_class="fish_class" load_steps=4 format=3 uid="uid://befo1awbugr6u"]
 
 [ext_resource type="Script" path="res://script/fish/fish_class.gd" id="1_0e46x"]
 [ext_resource type="Texture2D" uid="uid://cv3bkip8xp4ia" path="res://asset/sprite/fish/Basking_Shark.png" id="1_ejvs1"]
+[ext_resource type="Texture2D" uid="uid://6rel07hb2cbi" path="res://asset/sprite/fish/blur-full.png" id="3_g5201"]
 
 [resource]
 script = ExtResource("1_0e46x")
 swiming_type = 1
 fish_sprite = ExtResource("1_ejvs1")
+swimming_sprite = ExtResource("3_g5201")
 speed = 10.0
 depth = 2.0
 direction_change_interval = 0.1
