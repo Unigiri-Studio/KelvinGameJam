@@ -33,6 +33,7 @@ window/stretch/aspect="expand"
 [gui]
 
 theme/custom="res://asset/theme/main.tres"
+theme/custom_font="res://asset/theme/font/BirbFont-Regular.ttf"
 
 [input]
 

@@ -1,42 +1,64 @@
-[gd_scene load_steps=2 format=3 uid="uid://buffpihiyfdfp"]
+[gd_scene load_steps=5 format=3 uid="uid://buffpihiyfdfp"]
 
 [ext_resource type="Script" path="res://script/menu/start_menu.gd" id="1_8yjky"]
+[ext_resource type="SpriteFrames" uid="uid://d3nbaf4ypom0x" path="res://asset/bg/Kelvin_Start.gif" id="2_g86rd"]
+[ext_resource type="Theme" uid="uid://crcl4jjlnol8p" path="res://asset/theme/title.tres" id="3_c8txx"]
+[ext_resource type="Theme" uid="uid://c2seof1xs0sks" path="res://asset/theme/main.tres" id="4_n3hu0"]
 
-[node name="StartMenu" type="Node2D"]
-script = ExtResource("1_8yjky")
-
-[node name="UI" type="Control" parent="."]
+[node name="StartMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8yjky")
 
-[node name="GridContainer" type="GridContainer" parent="UI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-columns = 5
+[node name="bg" type="AnimatedSprite2D" parent="."]
+texture_filter = 4
+scale = Vector2(4.84074, 4.84074)
+sprite_frames = ExtResource("2_g86rd")
+animation = &"gif"
+autoplay = "gif"
+centered = false
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/GridContainer"]
-custom_minimum_size = Vector2(900, 0)
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.936
+anchor_top = 0.035
+anchor_right = 0.959
+anchor_bottom = 0.18
+offset_left = -965.0
+offset_bottom = 267.0
+grow_horizontal = 0
+
+[node name="title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_c8txx")
+text = "Kelvin's Katch"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 450)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/GridContainer"]
+[node name="startButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(600, 80)
 layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/GridContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 300)
-layout_mode = 2
-
-[node name="startButton" type="Button" parent="UI/GridContainer/VBoxContainer"]
-layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_n3hu0")
 text = "Play"
 
-[node name="quitButton" type="Button" parent="UI/GridContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+
+[node name="quitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(600, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_n3hu0")
 text = "Quit"
 
-[connection signal="pressed" from="UI/GridContainer/VBoxContainer/startButton" to="." method="_start_button_pressed"]
-[connection signal="pressed" from="UI/GridContainer/VBoxContainer/quitButton" to="." method="_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/startButton" to="." method="_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/quitButton" to="." method="_quit_button_pressed"]
