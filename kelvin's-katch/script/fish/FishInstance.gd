@@ -3,8 +3,7 @@ extends Node3D
 
 @export var fish_data: fish_class  
 
-
-const CLOSE_DISTANCE = 5.0
+const CLOSE_DISTANCE = 4.0
 
 # Constants for movement bounds
 const X_BOUND = Vector2(-150, 150)
@@ -15,30 +14,27 @@ var velocity = Vector3.ZERO
 var update_interval = 0.0  
 var update_timer = 0.0 
 
-
 func _ready() -> void:
 	if fish_data != null:
 		fish_data.initialize() 
 		add_to_group(fish_data.species)
-		add_to_group("all_fish")
 		randomize_position()
-		
 		fish_data.initialize_random_direction()
+		# Add random offsets to intervals for variation
+		fish_data.direction_change_interval += randf_range(-0.2, 0.2)
+		if fish_data.swiming_type == 2:
+			fish_data.stop_time_interval += randf_range(-0.5, 0.5)
 		
-		# 各魚ごとにランダムな更新間隔を設定（0.1秒から0.5秒の範囲で設定）
 		update_interval = randf_range(0.1, 0.5)
 		
 		if fish_data.fish_sprite != null:
 			var sprite = Sprite3D.new()
 			sprite.texture = fish_data.fish_sprite
-			if(fish_data.swiming_type == 1):
-				sprite.rotation_degrees.x = -90
-				sprite.rotation_degrees.y = -90
-				sprite.rotation_degrees.z = 0
-			if(fish_data.swiming_type == 2):
-				sprite.rotation_degrees.x = -90
-				sprite.rotation_degrees.y = 0
-				sprite.rotation_degrees.z = 0
+			match fish_data.swiming_type:
+				1:
+					sprite.rotation_degrees = Vector3(-90, -90, 0)
+				2: 
+					sprite.rotation_degrees = Vector3(-90, 0, 0)
 			add_child(sprite)
 		else:
 			print("Warning: fish_data.fish_sprite is null")
@@ -49,75 +45,51 @@ func _physics_process(delta: float) -> void:
 	if fish_data != null:
 		update_timer += delta
 		if update_timer >= update_interval:
-			fish_data.time_since_direction_change += update_timer
-
-			# Update direction based on interval
-			if fish_data.time_since_direction_change >= fish_data.direction_change_interval:
-				var separation = calculate_separation()
-				var alignment = calculate_alignment()
-				var cohesion = calculate_cohesion()
-
-				fish_data.update_direction(separation, alignment, cohesion)
-				fish_data.time_since_direction_change = 0.0
-
+			update_direction_if_needed(delta)
 			update_timer = 0.0
-		if(fish_data.swiming_type == 1):
-			fish_data.time_since_direction_change += delta
+
+		if fish_data.swiming_type == 1:
+			handle_swim_type_1(delta)
+		elif fish_data.swiming_type == 2:
+			handle_swim_type_2(delta)
 			
-			# Update direction based on interval
-			if fish_data.time_since_direction_change >= fish_data.direction_change_interval:
-				var separation = calculate_separation()
-				var alignment = calculate_alignment()
-				var cohesion = calculate_cohesion()
+func update_direction_if_needed(delta: float) -> void:
+	fish_data.time_since_direction_change += delta
+	if fish_data.time_since_direction_change >= fish_data.direction_change_interval:
+		var separation = calculate_separation()
+		var alignment = calculate_alignment()
+		var cohesion = calculate_cohesion()
+		fish_data.update_direction(separation, alignment, cohesion)
+		fish_data.time_since_direction_change = 0.0
 
-				fish_data.update_direction(separation, alignment, cohesion)
-				fish_data.time_since_direction_change = 0.0
+func handle_swim_type_1(delta: float) -> void:
+	apply_movement(delta)
+	check_bounds_and_reverse()
+	check_close_proximity()
 
-			apply_movement(delta)
-			check_bounds_and_reverse()
-			check_close_proximity()
-		if(fish_data.swiming_type == 2):
-			fish_data.time_since_direction_change += delta
-			fish_data.time_since_stop += delta
+func handle_swim_type_2(delta: float) -> void:
+	fish_data.time_since_stop += delta
 
-			# Handle stopping and direction updates
-			if fish_data.is_stopped:
-				# If stop time interval is over, resume movement
-				if fish_data.time_since_stop >= fish_data.stop_time_interval:
-					fish_data.is_stopped = false
-					fish_data.time_since_stop = 0.0
-				else:
-					# Calculate new direction only while stopped
-					if fish_data.time_since_direction_change >= fish_data.direction_change_interval:
-						var separation = calculate_separation()
-						var alignment = calculate_alignment()
-						var cohesion = calculate_cohesion()
-						fish_data.update_direction(separation, alignment, cohesion)
-						fish_data.time_since_direction_change = 0.0
-			else:
-				# Move in the pre-calculated direction without changing it
-				apply_movement(delta)
-				check_bounds_and_reverse()
-				check_close_proximity()
-				
-				# If movement time is up, switch to stop phase
-				if fish_data.time_since_stop >= fish_data.direction_change_interval:
-					fish_data.is_stopped = true
-					fish_data.time_since_stop = 0.0
+	if fish_data.is_stopped:
+		handle_stopped_state(delta)
+	else:
+		handle_moving_state(delta)
 
-func check_close_proximity() -> void:
-	for other_boid in get_tree().get_nodes_in_group("all_fish"):
-		if other_boid == self:
-			continue
-		var distance = global_position.distance_to(other_boid.global_position)
-		if distance < CLOSE_DISTANCE:
-			#print("Close proximity detected with:", other_boid.name)
-			fish_data.direction = -fish_data.direction
-			break 
+func handle_stopped_state(delta: float) -> void:
+	if fish_data.time_since_stop >= fish_data.stop_time_interval:
+		fish_data.is_stopped = false
+		fish_data.time_since_stop = 0.0
+	elif fish_data.time_since_direction_change >= fish_data.direction_change_interval:
+		update_direction_if_needed(delta)
 
-# Set initial random position
-func randomize_position() -> void:
-	global_position = Vector3(randf_range(X_BOUND.x, X_BOUND.y), 2, randf_range(Z_BOUND.x, Z_BOUND.y))
+func handle_moving_state(delta: float) -> void:
+	apply_movement(delta)
+	check_bounds_and_reverse()
+	check_close_proximity()
+
+	if fish_data.time_since_stop >= fish_data.direction_change_interval:
+		fish_data.is_stopped = true
+		fish_data.time_since_stop = 0.0
 
 # Apply movement using global_position
 func apply_movement(delta: float) -> void:
@@ -132,11 +104,31 @@ func apply_movement(delta: float) -> void:
 		var target_position = global_position + velocity.normalized()
 		look_at(target_position, Vector3.UP)
 
-# Handle collision events
-func _on_body_entered(body):
-	if body.is_in_group(fish_data.species):
-		print("Collision detected with: ", body.name)
-		fish_data.direction = -fish_data.direction
+# Check bounds and reverse direction
+func check_bounds_and_reverse() -> void:
+	if global_position.x < X_BOUND.x and fish_data.direction.x < 0:
+		fish_data.direction.x *= -1
+	elif global_position.x > X_BOUND.y and fish_data.direction.x > 0:
+		fish_data.direction.x *= -1
+
+	if global_position.z < Z_BOUND.x and fish_data.direction.z < 0:
+		fish_data.direction.z *= -1
+	elif global_position.z > Z_BOUND.y and fish_data.direction.z > 0:
+		fish_data.direction.z *= -1
+
+func check_close_proximity() -> void:
+	for other_boid in get_tree().get_nodes_in_group(fish_data.species):
+		if other_boid == self:
+			continue
+		var distance = global_position.distance_to(other_boid.global_position)
+		if distance < CLOSE_DISTANCE:
+			#print("Close proximity detected with:", other_boid.name)
+			fish_data.direction = -fish_data.direction
+			break 
+
+# Set initial random position
+func randomize_position() -> void:
+	global_position = Vector3(randf_range(X_BOUND.x, X_BOUND.y), fish_data.depth, randf_range(Z_BOUND.x, Z_BOUND.y))
 
 # Calculate separation vector to avoid nearby boids
 func calculate_separation() -> Vector3:
@@ -199,15 +191,3 @@ func calculate_cohesion() -> Vector3:
 		return (center_of_mass - global_position).normalized()
 	
 	return Vector3.ZERO
-
-# Check bounds and reverse direction
-func check_bounds_and_reverse() -> void:
-	if global_position.x < X_BOUND.x and fish_data.direction.x < 0:
-		fish_data.direction.x *= -1
-	elif global_position.x > X_BOUND.y and fish_data.direction.x > 0:
-		fish_data.direction.x *= -1
-
-	if global_position.z < Z_BOUND.x and fish_data.direction.z < 0:
-		fish_data.direction.z *= -1
-	elif global_position.z > Z_BOUND.y and fish_data.direction.z > 0:
-		fish_data.direction.z *= -1

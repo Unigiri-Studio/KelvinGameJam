@@ -6,6 +6,7 @@ class_name fish_class
 @export var swiming_type: int #1: linear, 2: stuttered
 @export var fish_sprite: CompressedTexture2D
 @export var speed: float
+@export var depth: float
 @export var direction_change_interval: float
 @export var stop_time_interval: float
 @export var separation_weight: float
