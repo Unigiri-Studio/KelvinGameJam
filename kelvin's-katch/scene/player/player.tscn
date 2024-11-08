@@ -10,8 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://u1atkoeb0x86" path="res://asset/sprite/player/boat-kelvinCast.png" id="7_be8xw"]
 [ext_resource type="Texture2D" uid="uid://dl4m7vgpkw2ad" path="res://asset/sprite/Target.png" id="8_hbqe6"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_10w5p"]
-radius = 0.707046
+[sub_resource type="BoxShape3D" id="BoxShape3D_u47f2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_prg30"]
 atlas = ExtResource("2_qjyb0")
@@ -561,8 +560,8 @@ height = 0.5
 script = ExtResource("1_tpxmx")
 
 [node name="playerCol" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.26993, 0, 0, 0, 1.26993, 0, 0, 0, 1.26993, 0, 0, 0)
-shape = SubResource("SphereShape3D_10w5p")
+transform = Transform3D(7.52, 0, 0, 0, 7.52, 0, 0, 0, 7.52, 0, 0, 0)
+shape = SubResource("BoxShape3D_u47f2")
 
 [node name="playerSprite" type="AnimatedSprite3D" parent="."]
 unique_name_in_owner = true
@@ -617,3 +616,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73, 2.165, 0)
 
 [node name="tipNW" type="Marker3D" parent="fishingRodTipMarker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.425, 4.96, 0)
+
+[connection signal="body_entered" from="fishingLure/catchArea" to="." method="_on_catch_area_entered"]
+
+[editable path="fishingLure"]

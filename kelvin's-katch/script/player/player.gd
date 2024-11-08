@@ -93,7 +93,7 @@ func _physics_process(delta):
 		STATE.WAITING:
 			if Input.is_action_just_pressed("castRod"):
 				changeState(STATE.AIMING)
-			#TODO Fish collision logic here
+			
 			
 #helper functions
 func changeState(newState: STATE) -> void:
@@ -184,3 +184,11 @@ func getRandomPosInsideMesh(mesh : MeshInstance3D) -> Vector3:
 	var cartZ = sin(angle) * distance
 	
 	return mesh.global_position + Vector3(cartX,cartY,cartZ)
+
+
+func _on_catch_area_entered(body):
+	if state == STATE.WAITING:
+		if body.name == "player":
+			changeState(STATE.AIMING)
+		get_parent().removeFish(body)
+		changeState(STATE.AIMING)

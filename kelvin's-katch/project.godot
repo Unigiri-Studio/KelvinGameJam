@@ -30,6 +30,10 @@ window/size/viewport_height=1296
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[global_group]
+
+fish=""
+
 [gui]
 
 theme/custom="res://asset/theme/main.tres"
