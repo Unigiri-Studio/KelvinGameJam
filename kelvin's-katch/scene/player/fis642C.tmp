@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx1y1r6tmvlqx"]
+
+[ext_resource type="Script" path="res://script/player/fishing_lure.gd" id="1_qegqy"]
+[ext_resource type="Texture2D" uid="uid://jw8s338e2vw0" path="res://asset/sprite/bobber.png" id="2_myexd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t3i3k"]
+size = Vector3(0.25, 30, 0.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fyoke"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[node name="fishingLure" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_qegqy")
+
+[node name="catchArea" type="Area3D" parent="."]
+priority = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="catchArea"]
+shape = SubResource("BoxShape3D_t3i3k")
+
+[node name="bobber" type="Sprite3D" parent="."]
+pixel_size = 0.0005
+billboard = 1
+texture = ExtResource("2_myexd")
+
+[node name="fishingLine" type="MeshInstance3D" parent="."]
+
+[node name="bobberCol" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fyoke")
+disabled = true

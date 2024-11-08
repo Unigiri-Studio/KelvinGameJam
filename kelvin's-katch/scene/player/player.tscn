@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://civ6o0pdiqoww"]
+[gd_scene load_steps=62 format=3 uid="uid://civ6o0pdiqoww"]
 
 [ext_resource type="Script" path="res://script/player/player.gd" id="1_tpxmx"]
 [ext_resource type="Texture2D" uid="uid://dyqmwm0ouo6kf" path="res://asset/sprite/player/boat-kelvinIdle.png" id="2_qjyb0"]
@@ -556,6 +556,10 @@ top_radius = 5.0
 bottom_radius = 5.0
 height = 0.5
 
+[sub_resource type="Curve" id="Curve_u3m2f"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.502618, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="player" type="CharacterBody3D"]
 script = ExtResource("1_tpxmx")
 
@@ -590,6 +594,7 @@ texture = ExtResource("8_hbqe6")
 unique_name_in_owner = true
 visible = false
 fishingRodTip = NodePath("..")
+throwCurve = SubResource("Curve_u3m2f")
 
 [node name="fishingRodTipMarker" type="Node3D" parent="."]
 
