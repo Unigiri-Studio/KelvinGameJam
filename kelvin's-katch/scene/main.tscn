@@ -10,6 +10,7 @@ background_color = Color(0.426014, 0.81733, 0.889096, 1)
 [node name="main" type="Node3D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_vhm4e")
 player = NodePath("player")
+fish_bounds_dist = 100
 
 [node name="world" type="Node3D" parent="."]
 
