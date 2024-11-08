@@ -74,6 +74,9 @@ func removeFish(fish_instance):
 func updateFishBounds():
 	x_range = Vector2(player.global_position.x-fish_bounds_dist, player.global_position.x+fish_bounds_dist)
 	z_range = Vector2(player.global_position.z-fish_bounds_dist, player.global_position.z+fish_bounds_dist)
+	for fish in current_fishies:
+		fish.X_BOUND = x_range
+		fish.Z_BOUND = z_range
 
 ## clears all fish from everything
 func clear_fish():
