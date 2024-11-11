@@ -11,6 +11,7 @@ shader = ExtResource("1_vky6f")
 [node name="showcase" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 1
 script = ExtResource("1_qnoni")
 fish_data = ExtResource("2_jhwjs")
 
@@ -33,6 +34,7 @@ stretch_mode = 5
 [node name="plaque" parent="VBoxContainer" instance=ExtResource("2_5n8t1")]
 unique_name_in_owner = true
 layout_mode = 2
+mouse_filter = 1
 
 [connection signal="text_submitted" from="VBoxContainer/plaque/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer/CenterContainer/sizeEdit" to="." method="_on_size_edit_text_submitted"]
 
