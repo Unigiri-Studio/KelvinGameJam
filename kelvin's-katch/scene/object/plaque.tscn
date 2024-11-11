@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://script/object/plaque.gd" id="1_pps5i"]
 
 [node name="plaque" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 375)
 offset_right = 932.0
 offset_bottom = 374.0
 mouse_filter = 2
@@ -13,17 +14,17 @@ script = ExtResource("1_pps5i")
 layout_mode = 2
 mouse_filter = 1
 texture = ExtResource("1_8vcas")
-region_rect = Rect2(0, 0, 1080, 1080)
-patch_margin_left = 191
-patch_margin_top = 197
-patch_margin_right = 187
-patch_margin_bottom = 177
+region_rect = Rect2(0, 0, 540, 540)
+patch_margin_left = 100
+patch_margin_top = 108
+patch_margin_right = 102
+patch_margin_bottom = 103
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
@@ -33,7 +34,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/HBoxContainer"]
@@ -43,8 +44,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 80
-text = "Mahi Mahi
-1800-1900
+text = "
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -71,9 +71,9 @@ theme_override_font_sizes/font_size = 80
 text = "10cm"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/CenterContainer/HBoxContainer"]
-custom_minimum_size = Vector2(70, 0)
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
