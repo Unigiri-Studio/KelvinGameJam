@@ -36,10 +36,18 @@ horizontal_alignment = 1
 [node name="scrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 vertical_scroll_mode = 0
 
 [node name="showcaseContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/scrollContainer"]
 unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/scrollContainer/showcaseContainer"]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
 [node name="catalogueToggle" type="Button" parent="."]

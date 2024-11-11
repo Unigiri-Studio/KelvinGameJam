@@ -28,7 +28,7 @@ func populate_fish_showcase(SpeciesDir : String):
 			sc.fish_data = load(SpeciesDir + speciesName).duplicate()
 			%showcaseContainer.add_child(sc)
 			var mc : MarginContainer = MarginContainer.new()
-			mc.custom_minimum_size.x = 1010
+			mc.custom_minimum_size.x = 610
 			%showcaseContainer.add_child(mc)
 			ind += 1
 			speciesName = dir.get_next()
