@@ -1,6 +1,6 @@
 extends Control
 
-var fish_data: fish_class
+@export var fish_data: fish_class
 
 @onready var plaque = %plaque
 
