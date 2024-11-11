@@ -13,4 +13,4 @@ func _process(delta):
 	if visible:
 		%fishSprite.texture = sprite
 		%fishSpecies.text = species
-		%fishSize.text = str(fishSize)
+		%fishSize.text = str(fishSize) + "cm"
