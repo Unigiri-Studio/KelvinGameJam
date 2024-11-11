@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=3 uid="uid://di8hdjd5607sv"]
+
+[ext_resource type="Texture2D" uid="uid://b1q072x5qlpsy" path="res://asset/sprite/Plaque.png" id="1_8vcas"]
+[ext_resource type="Script" path="res://script/object/plaque.gd" id="1_pps5i"]
+
+[node name="plaque" type="MarginContainer"]
+offset_right = 932.0
+offset_bottom = 374.0
+script = ExtResource("1_pps5i")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_8vcas")
+region_rect = Rect2(0, 0, 1080, 1080)
+patch_margin_left = 191
+patch_margin_top = 197
+patch_margin_right = 187
+patch_margin_bottom = 177
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="description" type="Label" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "Mahi Mahi
+1800-1900
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="sizeEdit" type="LineEdit" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+placeholder_text = "??cm"
+alignment = 1
+
+[node name="sizeCorrect" type="Label" parent="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "10cm"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2

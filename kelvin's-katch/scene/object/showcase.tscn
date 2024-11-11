@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnb1ii0d7vnro"]
+
+[ext_resource type="Texture2D" uid="uid://dy8tlgl7e5u55" path="res://asset/sprite/fish/Cod.png" id="1_n3f8r"]
+[ext_resource type="Script" path="res://script/object/showcase.gd" id="1_qnoni"]
+[ext_resource type="Shader" path="res://asset/shader/hidden.gdshader" id="1_vky6f"]
+[ext_resource type="PackedScene" uid="uid://di8hdjd5607sv" path="res://scene/object/plaque.tscn" id="2_5n8t1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8sn3"]
+shader = ExtResource("1_vky6f")
+
+[node name="showcase" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qnoni")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1000, 1000)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="fishTexture" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_k8sn3")
+layout_mode = 2
+texture = ExtResource("1_n3f8r")
+expand_mode = 5
+
+[node name="plaque" parent="VBoxContainer" instance=ExtResource("2_5n8t1")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="text_submitted" from="VBoxContainer/plaque/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer/CenterContainer/sizeEdit" to="." method="_on_size_edit_text_submitted"]
+
+[editable path="VBoxContainer/plaque"]

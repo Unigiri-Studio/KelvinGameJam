@@ -56,10 +56,8 @@ text = "☰"
 
 [node name="Catalogue" parent="UI" instance=ExtResource("3_ye5ek")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
-
-[node name="catalogueToggle" parent="UI/Catalogue" index="0"]
-layout_mode = 0
 
 [connection signal="timeout" from="waveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="pressed" from="UI/catalogueToggle" to="." method="_on_catalogue_button_pressed"]
