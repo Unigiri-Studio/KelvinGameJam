@@ -18,6 +18,7 @@ func _process(delta):
 
 func _on_size_edit_text_submitted(new_text):
 	if plaque.speciesSize == int(new_text):
+		Glubal.Catalogued += 1
 		print("correct guess")
 		%fishTexture.material = null
 		plaque.catalogued = true

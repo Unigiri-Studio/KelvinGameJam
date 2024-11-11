@@ -32,6 +32,7 @@ func _ready() -> void:
 
 
 func _process(delta):
+	checkEndGame()
 	updateFishBounds()#update fish bounds
 	total_fish = current_fishies.size() #update total fish in main
 	while total_fish < max_fish:
@@ -122,6 +123,10 @@ func populate_fish_species(SpeciesDir : String):
 			speciesName = dir.get_next()
 	else:
 		print("error: cannot get Species Directory")
+		
+func checkEndGame():
+	if Glubal.Catalogued == fish_species_name.size():
+		get_tree().change_scene_to_file("res://scene/menu/endMenu.tscn")
 
 
 func _on_catalogue_button_pressed():
