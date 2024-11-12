@@ -29,7 +29,7 @@ func _ready() -> void:
 	updateFishBounds() # init fish bounds
 	populate_fish_species("res://asset/resource/fish/") #setup
 	initOcean()
-	play_cutscene()
+	#play_cutscene()
 
 
 func _process(delta):
@@ -129,10 +129,10 @@ func checkEndGame():
 	if Glubal.Catalogued == fish_species_name.size():
 		get_tree().change_scene_to_file("res://scene/menu/endMenu.tscn")
 
-func play_cutscene():
-	$UI/cutsceneLoading.play = true
+#func play_cutscene():
+	#$UI/cutsceneLoading.play = true
 	#$UI/ControlScheme.hide()
-	$UI/cutsceneLoading.show()
+	#$UI/cutsceneLoading.show()
 
 func _on_catalogue_button_pressed():
 	if !%Catalogue.visible: #if catalogue is not visible

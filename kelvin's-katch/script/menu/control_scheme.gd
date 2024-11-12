@@ -1,6 +1,7 @@
 extends Control
 
 var fin : bool = false
+@export var catalogue : Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,8 +12,7 @@ func _ready():
 func _process(delta):
 	if(modulate.a <= 0):
 		queue_free()
-	
-	if(fin):
+	if(fin or catalogue.visible):
 		modulate.a -= 0.1
 
 

@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7ym30s3dqf1i"]
+[gd_scene load_steps=6 format=3 uid="uid://b7ym30s3dqf1i"]
 
 [ext_resource type="PackedScene" uid="uid://civ6o0pdiqoww" path="res://scene/player/player.tscn" id="1_amkwu"]
 [ext_resource type="Script" path="res://script/main.gd" id="1_vhm4e"]
 [ext_resource type="PackedScene" uid="uid://bq6xfyycptl27" path="res://scene/menu/catalogue.tscn" id="3_ye5ek"]
-[ext_resource type="PackedScene" uid="uid://762h7hmn610x" path="res://scene/menu/cutscene_loading.tscn" id="4_ro3kp"]
 [ext_resource type="PackedScene" uid="uid://bstp3v0763thx" path="res://scene/menu/control_scheme.tscn" id="5_h4j3y"]
 
 [sub_resource type="Environment" id="Environment_mkmn8"]
@@ -61,12 +60,9 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[node name="ControlScheme" parent="UI" instance=ExtResource("5_h4j3y")]
+[node name="ControlScheme" parent="UI" node_paths=PackedStringArray("catalogue") instance=ExtResource("5_h4j3y")]
 layout_mode = 1
-
-[node name="cutsceneLoading" parent="UI" instance=ExtResource("4_ro3kp")]
-visible = false
-layout_mode = 1
+catalogue = NodePath("../Catalogue")
 
 [connection signal="timeout" from="waveTimer" to="." method="_on_wave_timer_timeout"]
 [connection signal="pressed" from="UI/catalogueToggle" to="." method="_on_catalogue_button_pressed"]

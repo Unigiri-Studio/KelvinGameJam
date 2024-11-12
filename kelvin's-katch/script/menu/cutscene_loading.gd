@@ -12,14 +12,13 @@ func _ready():
 func _process(delta):
 	if(modulate.a <= 0):
 		queue_free()
-	
-	if (play):
-		$AnimatedSprite2D.play("gif", 0.5)
+	#if (play):
+		#$AnimatedSprite2D.play("gif", 0.5)
 	if(cutscene_finished):
 		modulate.a -= 0.1
 	
 
 
-func _on_cutscene_finished():
-	print("fin")
-	cutscene_finished = true
+#func _on_cutscene_finished):
+	#print("fin")
+	#cutscene_finished = true
