@@ -5,6 +5,33 @@
 [ext_resource type="Theme" uid="uid://crcl4jjlnol8p" path="res://asset/theme/title.tres" id="3_c8txx"]
 [ext_resource type="Theme" uid="uid://c2seof1xs0sks" path="res://asset/theme/main.tres" id="4_n3hu0"]
 
+[sub_resource type="Animation" id="Animation_xi3rk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("title:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("title:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(904, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_le4mk"]
 resource_name = "title"
 length = 2.0
@@ -31,33 +58,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(904, 0), Vector2(895, -3), Vector2(900, 4), Vector2(904, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_xi3rk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("title:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("title:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(904, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cefs5"]
