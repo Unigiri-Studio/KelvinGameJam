@@ -131,6 +131,8 @@ func checkEndGame():
 
 func play_cutscene():
 	$UI/cutsceneLoading.play = true
+	#$UI/ControlScheme.hide()
+	$UI/cutsceneLoading.show()
 
 func _on_catalogue_button_pressed():
 	if !%Catalogue.visible: #if catalogue is not visible
