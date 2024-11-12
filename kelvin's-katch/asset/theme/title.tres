@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://crcl4jjlnol8p"]
+
+[ext_resource type="FontFile" uid="uid://c35fwgck7xv8x" path="res://asset/theme/font/BirbFont-Regular.ttf" id="1_c5cyp"]
+[ext_resource type="FontFile" uid="uid://d3yip2pnhiqx5" path="res://asset/theme/font/TradeWinds-Regular.ttf" id="1_tpb44"]
+
+[resource]
+Button/font_sizes/font_size = 44
+Button/fonts/font = ExtResource("1_c5cyp")
+Label/colors/font_color = Color(0.301961, 0.105882, 0.0313726, 1)
+Label/font_sizes/font_size = 166
+Label/fonts/font = ExtResource("1_tpb44")

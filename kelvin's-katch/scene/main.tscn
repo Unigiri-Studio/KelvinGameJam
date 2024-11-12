@@ -1,12 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7ym30s3dqf1i"]
+[gd_scene load_steps=7 format=3 uid="uid://b7ym30s3dqf1i"]
 
 [ext_resource type="PackedScene" uid="uid://civ6o0pdiqoww" path="res://scene/player/player.tscn" id="1_amkwu"]
+[ext_resource type="Script" path="res://script/main.gd" id="1_vhm4e"]
+[ext_resource type="PackedScene" uid="uid://bq6xfyycptl27" path="res://scene/menu/catalogue.tscn" id="3_ye5ek"]
+[ext_resource type="PackedScene" uid="uid://762h7hmn610x" path="res://scene/menu/cutscene_loading.tscn" id="4_ro3kp"]
+[ext_resource type="PackedScene" uid="uid://bstp3v0763thx" path="res://scene/menu/control_scheme.tscn" id="5_h4j3y"]
 
 [sub_resource type="Environment" id="Environment_mkmn8"]
 background_mode = 1
 background_color = Color(0.426014, 0.81733, 0.889096, 1)
 
-[node name="main" type="Node3D"]
+[node name="main" type="Node3D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_vhm4e")
+player = NodePath("player")
+fish_bounds_dist = 100
 
 [node name="world" type="Node3D" parent="."]
 
@@ -17,7 +24,52 @@ transform = Transform3D(0.883635, -0.243541, 0.399847, -0.123957, 0.701871, 0.70
 environment = SubResource("Environment_mkmn8")
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_amkwu")]
-camera = NodePath("../Camera")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+camera = NodePath("Camera")
 
-[node name="Camera" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 15, 15)
+
+[node name="waveTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.25
+autostart = true
+
+[node name="fishContainer" type="Node3D" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="catalogueToggle" type="Button" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+offset_right = 84.0
+offset_bottom = 238.0
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 150
+action_mode = 0
+text = "☰"
+
+[node name="Catalogue" parent="UI" instance=ExtResource("3_ye5ek")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="ControlScheme" parent="UI" instance=ExtResource("5_h4j3y")]
+layout_mode = 1
+
+[node name="cutsceneLoading" parent="UI" instance=ExtResource("4_ro3kp")]
+visible = false
+layout_mode = 1
+
+[connection signal="timeout" from="waveTimer" to="." method="_on_wave_timer_timeout"]
+[connection signal="pressed" from="UI/catalogueToggle" to="." method="_on_catalogue_button_pressed"]
+[connection signal="pressed" from="UI/Catalogue/catalogueToggle" to="." method="_on_catalogue_button_pressed"]
+
+[editable path="UI/Catalogue"]

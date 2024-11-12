@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://nv6v3jfityiw"]
+
+[ext_resource type="Texture2D" uid="uid://bwfnj771lqm0g" path="res://asset/sprite/wave.png" id="1_ajdev"]
+[ext_resource type="Script" path="res://script/object/wave.gd" id="1_n7v55"]
+
+[node name="Wave" type="Node3D"]
+script = ExtResource("1_n7v55")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.005
+billboard = 1
+texture = ExtResource("1_ajdev")

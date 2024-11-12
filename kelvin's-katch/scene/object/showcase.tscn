@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnb1ii0d7vnro"]
+
+[ext_resource type="Script" path="res://script/object/showcase.gd" id="1_qnoni"]
+[ext_resource type="Shader" path="res://asset/shader/hidden.gdshader" id="1_vky6f"]
+[ext_resource type="PackedScene" uid="uid://di8hdjd5607sv" path="res://scene/object/plaque.tscn" id="2_5n8t1"]
+[ext_resource type="Resource" uid="uid://b8xtri8posilo" path="res://asset/resource/fish/flounder.tres" id="2_jhwjs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k8sn3"]
+shader = ExtResource("1_vky6f")
+
+[node name="showcase" type="Control"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_qnoni")
+fish_data = ExtResource("2_jhwjs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 500)
+layout_direction = 2
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 1028.0
+alignment = 1
+
+[node name="fishTexture" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_k8sn3")
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+expand_mode = 4
+stretch_mode = 5
+
+[node name="plaque" parent="VBoxContainer" instance=ExtResource("2_5n8t1")]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+
+[connection signal="text_submitted" from="VBoxContainer/plaque/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer/CenterContainer/sizeEdit" to="." method="_on_size_edit_text_submitted"]
+
+[editable path="VBoxContainer/plaque"]
