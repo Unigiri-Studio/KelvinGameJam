@@ -25,6 +25,7 @@ var current_fishies : Array = []
 
 
 func _ready() -> void:
+	Music.play_music_level()
 	%Catalogue.hide()
 	updateFishBounds() # init fish bounds
 	populate_fish_species("res://asset/resource/fish/") #setup
