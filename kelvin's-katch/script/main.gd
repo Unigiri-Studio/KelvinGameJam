@@ -34,6 +34,8 @@ func _ready() -> void:
 
 
 func _process(delta):
+	if Input.is_action_just_pressed("menu"):
+		_on_catalogue_button_pressed()
 	checkEndGame()
 	updateFishBounds()#update fish bounds
 	total_fish = current_fishies.size() #update total fish in main
@@ -128,6 +130,8 @@ func populate_fish_species(SpeciesDir : String):
 		
 func checkEndGame():
 	if Glubal.Catalogued == fish_species_name.size():
+		Engine.time_scale = 1
+		player.changeState(player.STATE.SAILING)
 		get_tree().change_scene_to_file("res://scene/menu/endMenu.tscn")
 
 #func play_cutscene():
