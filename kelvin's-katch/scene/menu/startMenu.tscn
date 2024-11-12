@@ -1,9 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://buffpihiyfdfp"]
+[gd_scene load_steps=8 format=3 uid="uid://buffpihiyfdfp"]
 
 [ext_resource type="Script" path="res://script/menu/start_menu.gd" id="1_8yjky"]
 [ext_resource type="SpriteFrames" uid="uid://bqfix6e3yedlw" path="res://asset/bg/Kelvin_Start.gif" id="2_l7gvy"]
 [ext_resource type="Theme" uid="uid://crcl4jjlnol8p" path="res://asset/theme/title.tres" id="3_c8txx"]
 [ext_resource type="Theme" uid="uid://c2seof1xs0sks" path="res://asset/theme/main.tres" id="4_n3hu0"]
+
+[sub_resource type="Animation" id="Animation_le4mk"]
+resource_name = "title"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("title:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 0.933333, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0174533, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("title:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.633333, 1.53333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(904, 0), Vector2(895, -3), Vector2(900, 4), Vector2(904, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xi3rk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("title:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("title:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(904, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cefs5"]
+_data = {
+"RESET": SubResource("Animation_xi3rk"),
+"title": SubResource("Animation_le4mk")
+}
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -33,13 +94,8 @@ offset_left = -965.0
 offset_bottom = 267.0
 grow_horizontal = 0
 
-[node name="title" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_c8txx")
-text = "Kelvin's Katch"
-
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 450)
+custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
 
 [node name="startButton" type="Button" parent="VBoxContainer"]
@@ -60,5 +116,29 @@ size_flags_horizontal = 4
 theme = ExtResource("4_n3hu0")
 text = "Quit"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cefs5")
+}
+autoplay = "title"
+speed_scale = 0.25
+
+[node name="title" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1400, 0)
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1400.0
+offset_bottom = 300.0
+grow_horizontal = 0
+pivot_offset = Vector2(592, 121)
+theme = ExtResource("3_c8txx")
+text = "Kelvin's Katch"
+vertical_alignment = 2
+
 [connection signal="pressed" from="VBoxContainer/startButton" to="." method="_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/quitButton" to="." method="_quit_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

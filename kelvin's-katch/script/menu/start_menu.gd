@@ -16,3 +16,7 @@ func _start_button_pressed():
 
 func _quit_button_pressed():
 	get_tree().quit()
+
+
+func _on_animation_player_animation_finished(anim_name):
+	$AnimationPlayer.play("title")
