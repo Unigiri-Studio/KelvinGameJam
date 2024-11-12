@@ -104,17 +104,25 @@ func apply_movement(delta: float) -> void:
 		var target_position = global_position + velocity.normalized()
 		look_at(target_position, Vector3.UP)
 
-# Check bounds and reverse direction
+# Check bounds and teleport to the opposite side without changing direction
 func check_bounds_and_reverse() -> void:
-	if global_position.x < X_BOUND.x and fish_data.direction.x < 0:
-		fish_data.direction.x *= -1
-	elif global_position.x > X_BOUND.y and fish_data.direction.x > 0:
-		fish_data.direction.x *= -1
+	var margin = 0.1  
+	print("Before: ", global_position)
 
-	if global_position.z < Z_BOUND.x and fish_data.direction.z < 0:
-		fish_data.direction.z *= -1
-	elif global_position.z > Z_BOUND.y and fish_data.direction.z > 0:
-		fish_data.direction.z *= -1
+	# Check X bounds
+	if global_position.x < X_BOUND.x:
+		global_position.x = X_BOUND.y - margin
+	elif global_position.x > X_BOUND.y:
+		global_position.x = X_BOUND.x + margin
+
+	# Check Z bounds
+	if global_position.z < Z_BOUND.x:
+		global_position.z = Z_BOUND.y - margin
+	elif global_position.z > Z_BOUND.y:
+		global_position.z = Z_BOUND.x + margin
+
+	print("After: ", global_position)
+
 
 func check_close_proximity() -> void:
 	for other_boid in get_tree().get_nodes_in_group(fish_data.species):
