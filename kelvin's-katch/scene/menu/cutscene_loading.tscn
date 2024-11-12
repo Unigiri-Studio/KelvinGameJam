@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://762h7hmn610x"]
+
+[ext_resource type="Script" path="res://script/menu/cutscene_loading.gd" id="1_jlwg0"]
+[ext_resource type="SpriteFrames" uid="uid://cxfb5uoh0w6mc" path="res://asset/bg/cutscene.gif" id="3_eg46d"]
+
+[node name="cutsceneLoading" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jlwg0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4.85185, 4.85185)
+sprite_frames = ExtResource("3_eg46d")
+animation = &"gif"
+frame = 74
+frame_progress = 0.646509
+centered = false
+
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_cutscene_finished"]

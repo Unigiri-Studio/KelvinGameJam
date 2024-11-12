@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7ym30s3dqf1i"]
+[gd_scene load_steps=6 format=3 uid="uid://b7ym30s3dqf1i"]
 
 [ext_resource type="PackedScene" uid="uid://civ6o0pdiqoww" path="res://scene/player/player.tscn" id="1_amkwu"]
 [ext_resource type="Script" path="res://script/main.gd" id="1_vhm4e"]
 [ext_resource type="PackedScene" uid="uid://bq6xfyycptl27" path="res://scene/menu/catalogue.tscn" id="3_ye5ek"]
+[ext_resource type="PackedScene" uid="uid://762h7hmn610x" path="res://scene/menu/cutscene_loading.tscn" id="4_ro3kp"]
 
 [sub_resource type="Environment" id="Environment_mkmn8"]
 background_mode = 1
@@ -57,6 +58,9 @@ text = "☰"
 [node name="Catalogue" parent="UI" instance=ExtResource("3_ye5ek")]
 unique_name_in_owner = true
 visible = false
+layout_mode = 1
+
+[node name="cutsceneLoading" parent="UI" instance=ExtResource("4_ro3kp")]
 layout_mode = 1
 
 [connection signal="timeout" from="waveTimer" to="." method="_on_wave_timer_timeout"]
