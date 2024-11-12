@@ -4,6 +4,7 @@ var main = "res://scene/main.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Music.play_music_level()
 	pass # Replace with function body.
 	ResourceLoader.load_threaded_request(main)
 
