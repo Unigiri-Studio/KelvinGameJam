@@ -40,6 +40,7 @@ func _ready():
 func _physics_process(delta):
 	match state:
 		STATE.IDLE:
+			%boatEngine.stop()
 			if Input:#if input is recived
 				if Input.is_action_pressed("sailLeft") or Input.is_action_pressed("sailRight") or Input.is_action_pressed("sailForward") or Input.is_action_pressed("sailBackwards"): #movement
 					changeState(STATE.SAILING)
@@ -53,6 +54,9 @@ func _physics_process(delta):
 			direction = Input.get_vector("sailLeft", "sailRight", "sailForward", "sailBackwards").normalized()
 			direction = Vector3(direction.x,0,direction.y) #convert vector2 into vector3
 			state = STATE.SAILING
+			
+			if %boatEngine.playing == false:
+				%boatEngine.play()
 		
 			if(velocity.length() <= 0.1): #player stopped
 				changeState(STATE.IDLE)
@@ -108,6 +112,7 @@ func changeState(newState: STATE) -> void:
 	state = newState
 	match state:
 		STATE.IDLE:
+			%deck.play()
 			play_animation(STATELOOKUP[state] + DIRLOOKUP[dirState])
 			%accuracyRing.scale = Vector3i(1,1,1)
 			%target.scale = Vector3(1,1,1)
@@ -121,6 +126,7 @@ func changeState(newState: STATE) -> void:
 			%fishingRing.visible = false
 			print("Sailing")
 		STATE.AIMING:
+			%deck.play()
 			play_animation(STATELOOKUP[state] + DIRLOOKUP[dirState])
 			%fishingRing.visible = true
 			lure.visible = false
@@ -217,4 +223,5 @@ func _on_catch_area_entered(body):
 		fish_caught_popup.species = body.fish_data.species
 		fish_caught_popup.fishSize = body.fish_data.generate_random_size()
 		get_parent().removeFish(body)
+		%fished.play()
 		changeState(STATE.CATCHED)

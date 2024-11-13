@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://civ6o0pdiqoww"]
+[gd_scene load_steps=66 format=3 uid="uid://civ6o0pdiqoww"]
 
 [ext_resource type="Script" path="res://script/player/player.gd" id="1_tpxmx"]
 [ext_resource type="Texture2D" uid="uid://dyqmwm0ouo6kf" path="res://asset/sprite/player/boat-kelvinIdle.png" id="2_qjyb0"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://dcnn6k1lm3dp3" path="res://asset/sprite/player/boat-kelvinlessMoving2.png" id="4_kt7dt"]
 [ext_resource type="Texture2D" uid="uid://u1atkoeb0x86" path="res://asset/sprite/player/boat-kelvinCast.png" id="7_be8xw"]
 [ext_resource type="Texture2D" uid="uid://dl4m7vgpkw2ad" path="res://asset/sprite/Target.png" id="8_hbqe6"]
+[ext_resource type="AudioStream" uid="uid://c6rldst3vce7m" path="res://asset/resource/audio/sound/boat_engine_loop.wav" id="11_cte6a"]
+[ext_resource type="AudioStream" uid="uid://ykjs2dsgwn5k" path="res://asset/resource/audio/sound/kelvinDeck.wav" id="12_y364g"]
+[ext_resource type="AudioStream" uid="uid://c45e0oro0keen" path="res://asset/resource/audio/sound/fished.wav" id="13_st85u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u47f2"]
 
@@ -629,6 +632,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73, 2.165, 0)
 
 [node name="tipNW" type="Marker3D" parent="fishingRodTipMarker"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.425, 4.96, 0)
+
+[node name="boatEngine" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("11_cte6a")
+bus = &"soundEffect"
+
+[node name="deck" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("12_y364g")
+bus = &"soundEffect"
+
+[node name="fished" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("13_st85u")
+bus = &"soundEffect"
 
 [connection signal="body_entered" from="fishingLure/catchArea" to="." method="_on_catch_area_entered"]
 

@@ -160,3 +160,7 @@ func _on_catalogue_button_pressed():
 	else:
 		%Catalogue.hide()
 		Engine.time_scale = 1 # unpause game
+
+
+func _on_catalogue_toggle_mouse_entered():
+	%buttonSound.play()

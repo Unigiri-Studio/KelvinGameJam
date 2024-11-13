@@ -23,7 +23,7 @@ config/icon="res://icon.svg"
 
 DrawLine3d="*res://script/global/DrawLine3D.gd"
 Glubal="*res://script/global/glubal.gd"
-Music="*res://scene/global/music.tscn"
+Music="*res://scene/global/music.gd"
 
 [display]
 

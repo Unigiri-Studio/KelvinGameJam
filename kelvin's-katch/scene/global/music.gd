@@ -2,6 +2,7 @@ extends AudioStreamPlayer2D
 
 # Use a variable instead of a constant so we can modify it
 var level_music = preload("res://asset/resource/audio/Fish Game Unfinished.mp3")
+var menu_music = preload("res://asset/resource/audio/fish menu music.mp3")
 
 func _ready():
 	# Set the loop property on the audio stream to enable looping
@@ -18,3 +19,7 @@ func _play_music(music: AudioStream, volume = 0.0):
 
 func play_music_level():
 	_play_music(level_music)
+	
+func play_music_menu():
+	_play_music(menu_music)
+	

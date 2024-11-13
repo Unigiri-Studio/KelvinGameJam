@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://di8hdjd5607sv"]
+[gd_scene load_steps=4 format=3 uid="uid://di8hdjd5607sv"]
 
 [ext_resource type="Texture2D" uid="uid://b1q072x5qlpsy" path="res://asset/sprite/Plaque.png" id="1_8vcas"]
 [ext_resource type="Script" path="res://script/object/plaque.gd" id="1_pps5i"]
+[ext_resource type="AudioStream" uid="uid://twbh86465snp" path="res://asset/resource/audio/sound/Modern9.mp3" id="3_je07p"]
 
 [node name="plaque" type="MarginContainer"]
 custom_minimum_size = Vector2(0, 375)
@@ -77,3 +78,10 @@ layout_mode = 2
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
+
+[node name="textSubmit" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_je07p")
+bus = &"soundEffect"
+
+[connection signal="text_submitted" from="VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer/CenterContainer/sizeEdit" to="." method="_on_size_edit_text_submitted"]
