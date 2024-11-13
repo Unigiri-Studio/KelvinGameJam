@@ -11,7 +11,7 @@ func _ready():
 
 func _process(delta):
 	plaque.description = fish_data.species
-	plaque.speciesSize = str(fish_data.avg_size) + "cm"
+	plaque.speciesSize = fish_data.avg_size
 	%fishTexture.texture = fish_data.fish_sprite
 
 func _on_size_edit_text_submitted(new_text):
