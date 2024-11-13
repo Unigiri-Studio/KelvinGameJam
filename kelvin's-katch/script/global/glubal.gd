@@ -2,8 +2,6 @@ extends Node
 var species_size_toerance : int = 5
 var Catalogued : int = 0
 
-var popupStates : Array[bool] = []
-
 func cast(starting_pos : Vector3,ending_pos : Vector3, t : float, curve : Curve):
 	#starting_pos = addHeight(starting_pos, 1,curve)
 	#ending_pos = addHeight(ending_pos, 1,curve)

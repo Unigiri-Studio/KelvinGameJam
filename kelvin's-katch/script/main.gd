@@ -22,6 +22,7 @@ var fish_species_resource_path : Array[String] = []
 var fish_species_name : Dictionary
 
 var current_fishies : Array = []
+var consec : int = 0
 
 
 func _ready() -> void:
@@ -131,11 +132,21 @@ func populate_fish_species(SpeciesDir : String):
 		print("error: cannot get Species Directory")
 		
 func checkEndGame():
-	print(Glubal.popupStates)
-	if Glubal.Catalogued == fish_species_name.size():
-		Engine.time_scale = 1
-		player.changeState(player.STATE.SAILING)
-		get_tree().change_scene_to_file("res://scene/menu/endMenu.tscn")
+	var proceedToEnd : bool = true
+	for child in $UI/Catalogue/PanelContainer/VBoxContainer/scrollContainer/showcaseContainer.get_children():
+		if not(child.name.contains("Margin")):
+			if child.popupVis:
+				proceedToEnd = false
+				consec = 0
+				break
+	if proceedToEnd:
+		consec += 1
+	if(consec <= 10 and proceedToEnd):
+		print(consec)
+		if Glubal.Catalogued == fish_species_name.size():
+			Engine.time_scale = 1
+			player.changeState(player.STATE.SAILING)
+			get_tree().change_scene_to_file("res://scene/menu/endMenu.tscn")
 
 #func play_cutscene():
 	#$UI/cutsceneLoading.play = true

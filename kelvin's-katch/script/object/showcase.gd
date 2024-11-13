@@ -6,10 +6,13 @@ extends Control
 @onready var correct_guess_popup = %Popup  # Reference to your popup
 @onready var popup_label = %Label  # Reference to the label inside the popup
 
+var popupVis : bool = false
+
 func _ready():
 	pass
 
 func _process(delta):
+	popupVis = %Popup.visible
 	plaque.description = fish_data.species
 	plaque.speciesSize = fish_data.avg_size
 	%fishTexture.texture = fish_data.fish_sprite
