@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://c2seof1xs0sks"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://c2seof1xs0sks"]
 
 [ext_resource type="FontFile" uid="uid://c35fwgck7xv8x" path="res://asset/theme/font/BirbFont-Regular.ttf" id="1_75xpc"]
+[ext_resource type="Texture2D" uid="uid://b1q072x5qlpsy" path="res://asset/sprite/Plaque.png" id="2_vcqrx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80tfl"]
 content_margin_left = 4.0
@@ -73,6 +74,13 @@ corner_detail = 5
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0t78e"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hs8wq"]
+texture = ExtResource("2_vcqrx")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
 [resource]
 resource_local_to_scene = true
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
@@ -111,4 +119,5 @@ Label/font_sizes/font_size = 80
 Label/fonts/font = ExtResource("1_75xpc")
 Label/styles/normal = SubResource("StyleBoxEmpty_0t78e")
 LineEdit/font_sizes/font_size = 34
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_hs8wq")
 TabBar/font_sizes/font_size = 565

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnb1ii0d7vnro"]
+[gd_scene load_steps=7 format=3 uid="uid://md2k5serla6v"]
 
 [ext_resource type="Script" path="res://script/object/showcase.gd" id="1_qnoni"]
 [ext_resource type="Shader" path="res://asset/shader/hidden.gdshader" id="1_vky6f"]
 [ext_resource type="PackedScene" uid="uid://di8hdjd5607sv" path="res://scene/object/plaque.tscn" id="2_5n8t1"]
 [ext_resource type="Resource" uid="uid://b8xtri8posilo" path="res://asset/resource/fish/flounder.tres" id="2_jhwjs"]
+[ext_resource type="Texture2D" uid="uid://b1q072x5qlpsy" path="res://asset/sprite/Plaque.png" id="5_1e081"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k8sn3"]
 shader = ExtResource("1_vky6f")
@@ -36,6 +37,37 @@ stretch_mode = 5
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
+
+[node name="Popup" type="Popup" parent="."]
+unique_name_in_owner = true
+initial_position = 1
+size = Vector2i(1392, 1200)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Popup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+texture = ExtResource("5_1e081")
+region_rect = Rect2(0, 0, 540, 540)
+patch_margin_left = 100
+patch_margin_top = 108
+patch_margin_right = 102
+patch_margin_bottom = 103
+
+[node name="Label" type="Label" parent="Popup/NinePatchRect"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 209.67
+offset_top = 92.27
+offset_right = 1197.5
+offset_bottom = 1092.27
+text = "The quick brown fox jumps over the lazy dog. One two three four five.The quick brown fox jumps over the lazy dog. One two three four five.The quick brown fox jumps over the lazy dog. One two three four five.The quick brown fox jumps over the lazy dog. One two three four five.The quick brown fox jumps over the lazy dog. One two three four five.The quick brown fox jumps over the lazy dog. One two three four five."
+autowrap_mode = 2
 
 [connection signal="text_submitted" from="VBoxContainer/plaque/VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer/CenterContainer/sizeEdit" to="." method="_on_size_edit_text_submitted"]
 
