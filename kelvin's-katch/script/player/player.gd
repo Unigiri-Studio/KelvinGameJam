@@ -96,7 +96,7 @@ func _physics_process(delta):
 				changeState(STATE.WAITING)
 			
 		STATE.WAITING:
-			if Input.is_action_just_pressed("castRod"):
+			if Input.is_action_just_pressed("castRod") or Input.is_action_pressed("modeChange"):
 				changeState(STATE.AIMING)
 		STATE.CATCHED:
 			if Input.is_action_just_pressed("castRod") or Input.is_action_just_pressed("modeChange"):
