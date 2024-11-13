@@ -11,9 +11,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	%description.text = description
+	%description.text = description.replace('_',' ')
 	if(catalogued == false):
-		%sizeCorrect.text = str(speciesSize)
+		%sizeCorrect.text = str(speciesSize) + "cm"
 		return
 	%sizeEdit.visible = false
 	%sizeCorrect.visible = true

@@ -14,7 +14,7 @@ config/name="Kelvin's Katch"
 run/main_scene="res://scene/menu/startMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(1, 1, 1, 1)
-boot_splash/image="res://asset/logo/Unigiri-small.png"
+boot_splash/image="res://asset/logo/Unigiri.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
@@ -29,7 +29,6 @@ Music="*res://scene/global/music.tscn"
 
 window/size/viewport_width=2304
 window/size/viewport_height=1296
-window/size/mode=4
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 

@@ -36,12 +36,14 @@ func _ready() -> void:
 func _process(delta):
 	if Input.is_action_just_pressed("menu"):
 		_on_catalogue_button_pressed()
-	checkEndGame()
 	updateFishBounds()#update fish bounds
 	total_fish = current_fishies.size() #update total fish in main
 	while total_fish < max_fish:
 		spawnRandomFish()
 		total_fish += 1
+		
+func _physics_process(delta):
+	checkEndGame()
 
 ## wave spawning logic
 func _on_wave_timer_timeout():
@@ -129,6 +131,7 @@ func populate_fish_species(SpeciesDir : String):
 		print("error: cannot get Species Directory")
 		
 func checkEndGame():
+	print(Glubal.popupStates)
 	if Glubal.Catalogued == fish_species_name.size():
 		Engine.time_scale = 1
 		player.changeState(player.STATE.SAILING)
