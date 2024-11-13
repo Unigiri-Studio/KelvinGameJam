@@ -148,6 +148,7 @@ func changeState(newState: STATE) -> void:
 			%fishingRing.visible = false
 			print("Waiting")
 		STATE.CATCHED:
+			play_animation("celebrationN")
 			fish_caught_popup.show()
 			print("Catched")
 
