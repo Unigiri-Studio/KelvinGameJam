@@ -17,3 +17,7 @@ func _process(delta):
 		return
 	%sizeEdit.visible = false
 	%sizeCorrect.visible = true
+
+
+func _on_size_edit_text_submitted(new_text):
+	%textSubmit.play()

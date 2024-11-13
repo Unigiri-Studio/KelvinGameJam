@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://buffpihiyfdfp"]
+[gd_scene load_steps=10 format=3 uid="uid://buffpihiyfdfp"]
 
 [ext_resource type="Script" path="res://script/menu/start_menu.gd" id="1_8yjky"]
 [ext_resource type="SpriteFrames" uid="uid://crd2oe34fw25n" path="res://asset/bg/Kelvin_Start.gif" id="2_l7gvy"]
 [ext_resource type="Theme" uid="uid://crcl4jjlnol8p" path="res://asset/theme/title.tres" id="3_c8txx"]
 [ext_resource type="Theme" uid="uid://c2seof1xs0sks" path="res://asset/theme/main.tres" id="4_n3hu0"]
+[ext_resource type="AudioStream" uid="uid://cff1kdwm0nunp" path="res://asset/resource/audio/sound/Modern6.mp3" id="5_cnxft"]
+[ext_resource type="AudioStream" uid="uid://ck31balxavj3t" path="res://asset/resource/audio/sound/Modern13.mp3" id="6_17yyu"]
 
 [sub_resource type="Animation" id="Animation_xi3rk"]
 length = 0.001
@@ -139,6 +141,20 @@ theme = ExtResource("3_c8txx")
 text = "Kelvin's Katch"
 vertical_alignment = 2
 
+[node name="buttonSound1" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_17yyu")
+bus = &"soundEffect"
+
+[node name="buttonSound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_cnxft")
+bus = &"soundEffect"
+
+[connection signal="button_down" from="VBoxContainer/startButton" to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="VBoxContainer/startButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/startButton" to="." method="_start_button_pressed"]
+[connection signal="button_down" from="VBoxContainer/quitButton" to="." method="_on_button_down"]
+[connection signal="mouse_entered" from="VBoxContainer/quitButton" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer/quitButton" to="." method="_quit_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -4,7 +4,7 @@ var main = "res://scene/main.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Music.play_music_level()
+	Music.play_music_menu()
 	pass # Replace with function body.
 	ResourceLoader.load_threaded_request(main)
 
@@ -24,3 +24,10 @@ func _quit_button_pressed():
 
 func _on_animation_player_animation_finished(anim_name):
 	$AnimationPlayer.play("title")
+
+func _on_button_mouse_entered():
+	%buttonSound.play()
+
+
+func _on_button_down():
+	%buttonSound1.play()
