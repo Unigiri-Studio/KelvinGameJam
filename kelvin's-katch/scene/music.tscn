@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://gj7ak5wu4m0c"]
 
-[ext_resource type="AudioStream" uid="uid://cporu0w34qcw0" path="res://asset/resource/audio/Fish Game Unfinished.mp3" id="1_mq5a4"]
+[ext_resource type="AudioStream" uid="uid://bk0pl5c247mke" path="res://asset/resource/audio/FISH GAME finished.mp3" id="1_5ganh"]
 
 [node name="Music" type="Node2D"]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("1_mq5a4")
+stream = ExtResource("1_5ganh")
 autoplay = true
 parameters/looping = true
