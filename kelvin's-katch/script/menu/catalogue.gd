@@ -1,6 +1,8 @@
 extends Control
 
 var showcase = preload("res://scene/object/showcase.tscn")
+
+
 @onready var showcaseContainer = %showcaseContainer
 
 var calalogueNumber : int = 0

@@ -18,6 +18,7 @@ class_name fish_class
 @export var cohesion_radius: float
 @export var species: String
 @export var avg_size:int
+@export var fun_fact: String
 
 # Variables for direction and timing
 var time_since_direction_change = 0.0
