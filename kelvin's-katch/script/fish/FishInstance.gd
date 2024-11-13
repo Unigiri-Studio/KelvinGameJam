@@ -107,7 +107,6 @@ func apply_movement(delta: float) -> void:
 # Check bounds and teleport to the opposite side without changing direction
 func check_bounds_and_reverse() -> void:
 	var margin = 0.1  
-	print("Before: ", global_position)
 
 	# Check X bounds
 	if global_position.x < X_BOUND.x:
@@ -121,7 +120,6 @@ func check_bounds_and_reverse() -> void:
 	elif global_position.z > Z_BOUND.y:
 		global_position.z = Z_BOUND.x + margin
 
-	print("After: ", global_position)
 
 
 func check_close_proximity() -> void:
